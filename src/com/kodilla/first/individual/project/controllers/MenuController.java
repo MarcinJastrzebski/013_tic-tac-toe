@@ -4,13 +4,27 @@ import com.kodilla.first.individual.project.Main;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MenuController {
 
     private MainController mainController;
+    private BackgroundImage menuBackgroundImage;
+    @FXML
+    private Pane menuPane;
+
+    @FXML
+    public void initialize() {
+        System.out.println("testy");
+        File file = new File("resources/ideaOfMenu.png");
+        Image menuBackgroundImage = new Image(file.toURI().toString());
+        System.out.println(file.toURI().toString());
+    }
 
     @FXML
     public void openApplication(){
