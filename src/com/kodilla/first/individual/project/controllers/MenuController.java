@@ -17,22 +17,9 @@ public class MenuController {
     private MainController mainController;
     @FXML
     private Pane menuPane;
-    @FXML
-    private ImageView menuBackground;
 
     @FXML
     public void initialize() {
-        System.out.println("testy");
-        File file = new File("resources/ideaOfMenu.png");
-        Image menuBackgroundImage = new Image(file.toURI().toString());
-        menuBackground.setImage(menuBackgroundImage);
-        menuBackground.setFitHeight(100);
-        menuBackground.setFitWidth(100);
-        BackgroundImage backgroundImage = new BackgroundImage(menuBackgroundImage,null, null,BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        //menuBackground.setPreserveRatio(true);
-        System.out.println(file.toURI().toString());
-        //Group root = new Group();
-        //root.getChildren().addAll(menuBackground);
     }
 
     @FXML
@@ -46,7 +33,8 @@ public class MenuController {
         }
         AppController appController = loader.getController();
         appController.setMainController(mainController);
-        mainController.setScreen(pane);
+        mainController.setBackgroundAndScreen(new ImageView(new Image("file:resources/woodenBcg.jpg")), pane);
+        //mainController.setScreen(pane);
 
 
 

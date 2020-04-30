@@ -5,8 +5,10 @@ import java.io.IOException;
 import com.kodilla.first.individual.project.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+
 
 
 
@@ -37,6 +39,16 @@ public class MainController {
 
     public void setScreen(Pane pane) {
         mainStackPane.getChildren().clear();
+        mainStackPane.getChildren().add(pane);
+    }
+
+    public void setBackground(ImageView imageView) {
+        mainStackPane.getChildren().clear();
+        mainStackPane.getChildren().add(imageView);
+    }
+    public void setBackgroundAndScreen(ImageView imageView, Pane pane) {
+        mainStackPane.getChildren().clear();
+        mainStackPane.getChildren().add(imageView);
         mainStackPane.getChildren().add(pane);
     }
 
