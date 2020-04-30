@@ -34,6 +34,8 @@ public class MenuController {
         appController.setMainController(mainController);
         ImageView imageView = new ImageView(new Image("file:resources/woodenBcg.jpg"));
         //  imageView.setScaleX(1.1);
+        imageView.setFitHeight(400);
+        imageView.setY(130);
         mainController.setBackgroundAndScreen(imageView, pane);
         //mainController.setScreen(pane);
 
