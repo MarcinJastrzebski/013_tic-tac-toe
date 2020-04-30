@@ -12,13 +12,13 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Label layoutX="401.0" layoutY="92.0" prefHeight="36.0" prefWidth="171.0" text="Ustawienia" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="401.0" layoutY="92.0" prefHeight="36.0" prefWidth="171.0" text="Wybierz czym grasz" textAlignment="CENTER">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="choiceBox" layoutX="401.0" layoutY="134.0" prefHeight="44.0" prefWidth="171.0" />
-      <GridPane layoutX="14.0" layoutY="100.0" prefHeight="276.0" prefWidth="368.0">
+      <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="100.0" prefHeight="276.0" prefWidth="368.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,22 +30,63 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="image00" fitHeight="100.0" fitWidth="124.0" onMouseClicked="#image00Clicked" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="image01" fitHeight="100.0" fitWidth="125.0" onMouseClicked="#image01Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="image02" fitHeight="96.0" fitWidth="126.0" onMouseClicked="#image02Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <ImageView fx:id="image10" fitHeight="95.0" fitWidth="125.0" onMouseClicked="#image10Clicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="image11" fitHeight="98.0" fitWidth="124.0" onMouseClicked="#image11Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ImageView fx:id="image12" fitHeight="101.0" fitWidth="126.0" onMouseClicked="#image12Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ImageView fx:id="image21" fitHeight="93.0" fitWidth="125.0" onMouseClicked="#image21Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ImageView fx:id="image22" fitHeight="96.0" fitWidth="125.0" onMouseClicked="#image22Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ImageView fx:id="image20" fitHeight="94.0" fitWidth="125.0" onMouseClicked="#image20Clicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ImageView fx:id="image00" fitHeight="100.0" fitWidth="124.0" onMouseClicked="#image00Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <center>
+                  <ImageView fx:id="image10" fitHeight="95.0" fitWidth="125.0" onMouseClicked="#image10Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <center>
+                  <ImageView fx:id="image20" fitHeight="94.0" fitWidth="125.0" onMouseClicked="#image20Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <center>
+                  <ImageView fx:id="image01" fitHeight="100.0" fitWidth="125.0" onMouseClicked="#image01Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <center>
+                  <ImageView fx:id="image11" fitHeight="98.0" fitWidth="124.0" onMouseClicked="#image11Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <center>
+                  <ImageView fx:id="image21" fitHeight="93.0" fitWidth="125.0" onMouseClicked="#image21Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <center>
+                  <ImageView fx:id="image02" fitHeight="96.0" fitWidth="126.0" onMouseClicked="#image02Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <center>
+                  <ImageView fx:id="image12" fitHeight="101.0" fitWidth="126.0" onMouseClicked="#image12Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <center>
+                  <ImageView fx:id="image22" fitHeight="96.0" fitWidth="125.0" onMouseClicked="#image22Clicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
          </children>
       </GridPane>
-      <BorderPane layoutX="400.0" layoutY="187.0" prefHeight="133.0" prefWidth="171.0">
+      <BorderPane layoutX="401.0" layoutY="177.0" prefHeight="111.0" prefWidth="171.0">
          <center>
-            <ImageView fx:id="testImage" fitHeight="133.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="testImage" fitHeight="89.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
+      <Button layoutX="401.0" layoutY="289.0" mnemonicParsing="false" onAction="#play" prefHeight="36.0" prefWidth="171.0" text="Graj!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="20.0" />

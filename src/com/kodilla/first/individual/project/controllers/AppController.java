@@ -1,5 +1,7 @@
 package com.kodilla.first.individual.project.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
@@ -12,6 +14,7 @@ import java.io.File;
 public class AppController {
     public final static Image OLETTER = new Image("file:resources/o-letter.png");
     public final static Image XLETTER = new Image("file:resources/x-letter.png");
+    private Image player;
 
     private MainController mainController;
     @FXML
@@ -42,60 +45,88 @@ public class AppController {
     public void initialize(){
         choiceBoxInit();
 
-        File file = new File("resources/o-letter.png");
-        Image kolko = new Image(file.toURI().toString());
-        System.out.println(file.toURI().toString());
-        testImage.setImage(kolko);
+
     }
+
+
     @FXML
     public void backMenu(){
         mainController.loadMenuScreen();
     }
     @FXML
     public void image00Clicked(){
-        image00.setImage(OLETTER);
+        image00.setImage(player);
     }
 
     @FXML
     public void image01Clicked(){
-        image01.setImage(XLETTER);
+        image01.setImage(player);
     }
     @FXML
     public void image02Clicked(){
-        image02.setImage(XLETTER);
+        image02.setImage(player);
     }
     @FXML
     public void image10Clicked(){
-        image10.setImage(XLETTER);
+        image10.setImage(player);
     }
     @FXML
     public void image11Clicked(){
-        image11.setImage(XLETTER);
+        image11.setImage(player);
     }
     @FXML
     public void image12Clicked(){
-        image12.setImage(XLETTER);
+        image12.setImage(player);
     }
     @FXML
     public void image20Clicked(){
-        image20.setImage(XLETTER);
+        image20.setImage(player);
     }
     @FXML
     public void image21Clicked(){
-        image21.setImage(XLETTER);
+        image21.setImage(player);
     }
     @FXML
     public void image22Clicked(){
-        image22.setImage(XLETTER);
+        image22.setImage(player);
     }
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
+    @FXML
+    public void play(){
+        image00.setImage(null);
+        image01.setImage(null);
+        image02.setImage(null);
+        image10.setImage(null);
+        image11.setImage(null);
+        image12.setImage(null);
+        image20.setImage(null);
+        image21.setImage(null);
+        image22.setImage(null);
+    }
+
     private void choiceBoxInit(){
         choiceBox.getItems().add("Kółko");
         choiceBox.getItems().add("Krzyżyk");
         choiceBox.setValue("Krzyżyk");
+        testImage.setImage(XLETTER);
+        player = XLETTER;
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                System.out.println(choiceBox.getItems().get((Integer) t1));
+                if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))){
+                    testImage.setImage(XLETTER);
+                    player=XLETTER;
+                } else {
+                    testImage.setImage(OLETTER);
+                    player=OLETTER;
+                }
+            }
+
+        });
     }
 }
