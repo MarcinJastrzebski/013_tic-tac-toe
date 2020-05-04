@@ -3,6 +3,7 @@ package com.kodilla.first.individual.project.controllers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,7 @@ import java.io.File;
 public class AppController {
     public final static Image OLETTER = new Image("file:resources/o-letter.png");
     public final static Image XLETTER = new Image("file:resources/x-letter.png");
+    public final static String GRAJ = "Graj!";
     private Image player;
 
     private MainController mainController;
@@ -37,6 +39,9 @@ public class AppController {
     ImageView image21;
     @FXML
     ImageView image22;
+
+    @FXML
+    Button playBtn;
 
     @FXML
     private ImageView testImage;
@@ -97,6 +102,15 @@ public class AppController {
 
     @FXML
     public void play(){
+
+        if (GRAJ.equals(playBtn.getText())) {
+            choiceBox.setVisible(false);
+            playBtn.setText("RESET");
+        } else {
+            choiceBox.setVisible(true);
+            playBtn.setText(GRAJ);
+        }
+
         image00.setImage(null);
         image01.setImage(null);
         image02.setImage(null);
