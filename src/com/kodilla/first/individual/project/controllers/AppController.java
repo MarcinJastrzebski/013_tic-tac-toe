@@ -13,9 +13,11 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 
 public class AppController {
-    public final static Image OLETTER = new Image("file:resources/o-letter.png");
-    public final static Image XLETTER = new Image("file:resources/x-letter.png");
-    public final static String GRAJ = "Graj!";
+    private final static Image OLETTER = new Image("file:resources/o-letter.png");
+    private final static Image XLETTER = new Image("file:resources/x-letter.png");
+    private final static String GRAJ = "Graj!";
+    private final static String RESET = "Nowa gra";
+    private static boolean endGame;
     private Image player;
 
     private MainController mainController;
@@ -47,53 +49,92 @@ public class AppController {
     private ImageView testImage;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         choiceBoxInit();
+        endGame = true;
 
 
     }
 
 
     @FXML
-    public void backMenu(){
+    public void backMenu() {
         mainController.loadMenuScreen();
     }
+
     @FXML
-    public void image00Clicked(){
-        image00.setImage(player);
+    public void image00Clicked() {
+        if (!endGame) {
+            image00.setImage(player);
+            System.out.println("image " + image00.getImage());
+            System.out.println("player " + player);
+            System.out.println("xletter" + XLETTER.equals(image00.getImage()));
+            checkLine();
+        }
     }
 
     @FXML
-    public void image01Clicked(){
-        image01.setImage(player);
+    public void image01Clicked() {
+        if (!endGame){
+            image01.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image02Clicked(){
-        image02.setImage(player);
+    public void image02Clicked() {
+        if (!endGame){
+            image02.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image10Clicked(){
-        image10.setImage(player);
+    public void image10Clicked() {
+        if (!endGame){
+            image10.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image11Clicked(){
-        image11.setImage(player);
+    public void image11Clicked() {
+        if (!endGame){
+            image11.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image12Clicked(){
-        image12.setImage(player);
+    public void image12Clicked() {
+        if (!endGame){
+            image12.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image20Clicked(){
-        image20.setImage(player);
+    public void image20Clicked() {
+        if (!endGame){
+            image20.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image21Clicked(){
-        image21.setImage(player);
+    public void image21Clicked() {
+        if (!endGame){
+            image21.setImage(player);
+            checkLine();
+        }
     }
+
     @FXML
-    public void image22Clicked(){
-        image22.setImage(player);
+    public void image22Clicked() {
+        if (!endGame){
+            image22.setImage(player);
+            checkLine();
+        }
     }
 
     public void setMainController(MainController mainController) {
@@ -101,11 +142,12 @@ public class AppController {
     }
 
     @FXML
-    public void play(){
+    public void play() {
 
         if (GRAJ.equals(playBtn.getText())) {
             choiceBox.setVisible(false);
-            playBtn.setText("RESET");
+            endGame=false;
+            playBtn.setText(RESET);
         } else {
             choiceBox.setVisible(true);
             playBtn.setText(GRAJ);
@@ -122,7 +164,7 @@ public class AppController {
         image22.setImage(null);
     }
 
-    private void choiceBoxInit(){
+    private void choiceBoxInit() {
         choiceBox.getItems().add("Kółko");
         choiceBox.getItems().add("Krzyżyk");
         choiceBox.setValue("Krzyżyk");
@@ -132,15 +174,26 @@ public class AppController {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 System.out.println(choiceBox.getItems().get((Integer) t1));
-                if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))){
+                if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))) {
                     testImage.setImage(XLETTER);
-                    player=XLETTER;
+                    player = XLETTER;
                 } else {
                     testImage.setImage(OLETTER);
-                    player=OLETTER;
+                    player = OLETTER;
                 }
             }
 
         });
+    }
+
+    public void checkLine() {
+        System.out.println("Sprawdzam linię");
+        if (XLETTER.equals(image00.getImage())
+                && XLETTER.equals(image01.getImage())
+                && XLETTER.equals(image02.getImage())) {
+            System.out.println("LINIA");;
+            endGame =true;
+        }
+
     }
 }
