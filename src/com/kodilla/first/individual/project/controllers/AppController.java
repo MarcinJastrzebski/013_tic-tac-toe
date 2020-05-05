@@ -15,6 +15,9 @@ import java.io.File;
 public class AppController {
     private final static Image OLETTER = new Image("file:resources/o-letter.png");
     private final static Image XLETTER = new Image("file:resources/x-letter.png");
+    private final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
+    private final static Image XLETTERRED = new Image("file:resources/x-letter-red.png");
+    private final static Image TRANSP = new Image("file:resources/transp.png");
     private final static String GRAJ = "Graj!";
     private final static String RESET = "Nowa gra";
     private static boolean endGame;
@@ -75,7 +78,7 @@ public class AppController {
 
     @FXML
     public void image01Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image01.setImage(player);
             checkLine();
         }
@@ -83,7 +86,7 @@ public class AppController {
 
     @FXML
     public void image02Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image02.setImage(player);
             checkLine();
         }
@@ -91,7 +94,7 @@ public class AppController {
 
     @FXML
     public void image10Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image10.setImage(player);
             checkLine();
         }
@@ -99,7 +102,7 @@ public class AppController {
 
     @FXML
     public void image11Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image11.setImage(player);
             checkLine();
         }
@@ -107,7 +110,7 @@ public class AppController {
 
     @FXML
     public void image12Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image12.setImage(player);
             checkLine();
         }
@@ -115,7 +118,7 @@ public class AppController {
 
     @FXML
     public void image20Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image20.setImage(player);
             checkLine();
         }
@@ -123,7 +126,7 @@ public class AppController {
 
     @FXML
     public void image21Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image21.setImage(player);
             checkLine();
         }
@@ -131,7 +134,7 @@ public class AppController {
 
     @FXML
     public void image22Clicked() {
-        if (!endGame){
+        if (!endGame) {
             image22.setImage(player);
             checkLine();
         }
@@ -146,22 +149,23 @@ public class AppController {
 
         if (GRAJ.equals(playBtn.getText())) {
             choiceBox.setVisible(false);
-            endGame=false;
+            endGame = false;
             playBtn.setText(RESET);
         } else {
             choiceBox.setVisible(true);
             playBtn.setText(GRAJ);
+            endGame = true;
         }
 
-        image00.setImage(null);
-        image01.setImage(null);
-        image02.setImage(null);
-        image10.setImage(null);
-        image11.setImage(null);
-        image12.setImage(null);
-        image20.setImage(null);
-        image21.setImage(null);
-        image22.setImage(null);
+        image00.setImage(TRANSP);
+        image01.setImage(TRANSP);
+        image02.setImage(TRANSP);
+        image10.setImage(TRANSP);
+        image11.setImage(TRANSP);
+        image12.setImage(TRANSP);
+        image20.setImage(TRANSP);
+        image21.setImage(TRANSP);
+        image22.setImage(TRANSP);
     }
 
     private void choiceBoxInit() {
@@ -188,12 +192,83 @@ public class AppController {
 
     public void checkLine() {
         System.out.println("Sprawdzam linię");
-        if (XLETTER.equals(image00.getImage())
-                && XLETTER.equals(image01.getImage())
-                && XLETTER.equals(image02.getImage())) {
-            System.out.println("LINIA");;
-            endGame =true;
+        if (image00.getImage().equals(image01.getImage())
+                && image01.getImage().equals(image02.getImage())
+                && !TRANSP.equals(image00.getImage())) {
+            System.out.println("LINIA");
+            image00.setImage(changeImage(image00.getImage()));
+            image01.setImage(changeImage(image01.getImage()));
+            image02.setImage(changeImage(image02.getImage()));
+            endGame = true;
+        } else if (image10.getImage().equals(image11.getImage())
+                && image11.getImage().equals(image12.getImage())
+                && !TRANSP.equals(image10.getImage())) {
+            System.out.println("LINIA");
+            image10.setImage(changeImage(image10.getImage()));
+            image11.setImage(changeImage(image11.getImage()));
+            image12.setImage(changeImage(image12.getImage()));
+            endGame = true;
+        } else if (image20.getImage().equals(image21.getImage())
+                && image21.getImage().equals(image22.getImage())
+                && !TRANSP.equals(image20.getImage())) {
+            System.out.println("LINIA");
+            image20.setImage(changeImage(image20.getImage()));
+            image21.setImage(changeImage(image21.getImage()));
+            image22.setImage(changeImage(image22.getImage()));
+            endGame = true;
+        } else if (image00.getImage().equals(image10.getImage())
+                && image10.getImage().equals(image20.getImage())
+                && !TRANSP.equals(image00.getImage())) {
+            System.out.println("LINIA");
+            image00.setImage(changeImage(image00.getImage()));
+            image10.setImage(changeImage(image10.getImage()));
+            image20.setImage(changeImage(image20.getImage()));
+            endGame = true;
+        } else if (image01.getImage().equals(image11.getImage())
+                && image11.getImage().equals(image21.getImage())
+                && !TRANSP.equals(image01.getImage())) {
+            System.out.println("LINIA");
+            image01.setImage(changeImage(image01.getImage()));
+            image11.setImage(changeImage(image11.getImage()));
+            image21.setImage(changeImage(image21.getImage()));
+            endGame = true;
+        } else if (image02.getImage().equals(image12.getImage())
+                && image12.getImage().equals(image22.getImage())
+                && !TRANSP.equals(image02.getImage())) {
+            System.out.println("LINIA");
+            image02.setImage(changeImage(image02.getImage()));
+            image12.setImage(changeImage(image12.getImage()));
+            image22.setImage(changeImage(image22.getImage()));
+            endGame = true;
+        } else if (image00.getImage().equals(image11.getImage())
+                && image11.getImage().equals(image22.getImage())
+                && !TRANSP.equals(image00.getImage())) {
+            System.out.println("LINIA");
+            image00.setImage(changeImage(image00.getImage()));
+            image11.setImage(changeImage(image11.getImage()));
+            image22.setImage(changeImage(image22.getImage()));
+            endGame = true;
+        } else if (image02.getImage().equals(image11.getImage())
+                && image11.getImage().equals(image20.getImage())
+                && !TRANSP.equals(image02.getImage())) {
+            System.out.println("LINIA");
+            image02.setImage(changeImage(image02.getImage()));
+            image11.setImage(changeImage(image11.getImage()));
+            image20.setImage(changeImage(image20.getImage()));
+            endGame = true;
         }
 
     }
+
+    public Image changeImage(Image image) {
+        if (XLETTER.equals(image)) {
+            return XLETTERRED;
+        } else {
+            return OLETTERRED;
+        }
+    }
+
+    //ToTO
+    //- score
+    //popup with endgame
 }
