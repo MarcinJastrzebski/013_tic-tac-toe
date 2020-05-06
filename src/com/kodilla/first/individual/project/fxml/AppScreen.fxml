@@ -110,7 +110,7 @@
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <center>
-                  <Label text="0" BorderPane.alignment="CENTER" fx:id="xLbl">
+                  <Label BorderPane.alignment="CENTER" fx:id="xLbl">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -123,7 +123,7 @@
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <center>
-                  <Label fx:id="oLbl" text="0" BorderPane.alignment="CENTER">
+                  <Label fx:id="oLbl" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>

@@ -24,8 +24,11 @@ public class AppController {
     private final static String RESET = "Nowa gra";
     private static boolean endGame;
     private Image player;
-    private static Integer oScore =0;
-    private static Integer xScore=0;
+    private Image computer;
+    private static Integer oScore = 0;
+    private static Integer xScore = 0;
+    private static Integer numberOfPlayerMoves = 0;
+    private static Integer numberOfComputerMoves = 0;
 
     private MainController mainController;
     @FXML
@@ -71,8 +74,10 @@ public class AppController {
         xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
         oImgV.setImage(OLETTER);
         oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-        oLbl.setText(oScore.toString());
         xLbl.setText(xScore.toString());
+        oLbl.setText(oScore.toString());
+
+
 
     }
 
@@ -84,77 +89,115 @@ public class AppController {
 
     @FXML
     public void image00Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image00.getImage())) {
             image00.setImage(player);
             System.out.println("image " + image00.getImage());
             System.out.println("player " + player);
             System.out.println("xletter" + XLETTER.equals(image00.getImage()));
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image01Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image01.getImage())) {
             image01.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image02Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image02.getImage())) {
             image02.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image10Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image10.getImage())) {
             image10.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image11Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image11.getImage())) {
             image11.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image12Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image12.getImage())) {
             image12.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image20Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image20.getImage())) {
             image20.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image21Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image21.getImage())) {
             image21.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
     }
 
     @FXML
     public void image22Clicked() {
-        if (!endGame) {
+        if (!endGame && TRANSP.equals(image22.getImage())) {
             image22.setImage(player);
             checkLine();
+
+            computerMoveWithThread();
         }
+    }
+
+    public void computerMoveWithThread() {
+        if (!endGame) {
+//            new Thread(() -> {
+//                try {
+//                    Thread.sleep(100);
+//                    computerMove();
+//
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }).start();
+//            checkLine();
+
+            computerMove();
+            checkLine();
+
+        }
+
     }
 
     public void setMainController(MainController mainController) {
@@ -175,6 +218,7 @@ public class AppController {
         }
 
         image00.setImage(TRANSP);
+        //image00.setScaleX(0.1);
         image01.setImage(TRANSP);
         image02.setImage(TRANSP);
         image10.setImage(TRANSP);
@@ -191,6 +235,7 @@ public class AppController {
         choiceBox.setValue("Krzyżyk");
         testImage.setImage(XLETTER);
         player = XLETTER;
+        computer = OLETTER;
         choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -198,9 +243,11 @@ public class AppController {
                 if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))) {
                     testImage.setImage(XLETTER);
                     player = XLETTER;
+                    computer = OLETTER;
                 } else {
                     testImage.setImage(OLETTER);
                     player = OLETTER;
+                    computer = XLETTER;
                 }
             }
 
@@ -212,12 +259,21 @@ public class AppController {
         if (image00.getImage().equals(image01.getImage())
                 && image01.getImage().equals(image02.getImage())
                 && !TRANSP.equals(image00.getImage())) {
-            System.out.println("LINIA");
+            System.out.println("LINIA BB");
             image00.setImage(changeImage(image00.getImage()));
+            System.out.println("B1");
             image01.setImage(changeImage(image01.getImage()));
+            System.out.println("B2");
+
             image02.setImage(changeImage(image02.getImage()));
+            System.out.println("B3");
+
             addPoint(figure(image00.getImage()));
+            System.out.println("B4");
+
             endGame = true;
+            System.out.println("B5");
+
         } else if (image10.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image12.getImage())
                 && !TRANSP.equals(image10.getImage())) {
@@ -296,24 +352,63 @@ public class AppController {
         }
     }
 
-    public void addPoint(String figure){
-        if ("x".equals(figure)){
-            xScore+=1;
+    public void addPoint(String figure) {
+        if ("x".equals(figure)) {
+            xScore += 1;
             xLbl.setText(xScore.toString());
         } else {
-            oScore+=1;
+            oScore += 1;
             oLbl.setText(oScore.toString());
         }
 
     }
-    public String figure(Image image){
-        if (XLETTER.equals(image)||XLETTERRED.equals(image)) {
+
+    public String figure(Image image) {
+        if (XLETTER.equals(image) || XLETTERRED.equals(image)) {
             return "x";
         } else {
             return "o";
         }
     }
+
     //ToTO
     //- score
     //popup with endgame
+    public void computerMove() {
+        int counter=0;
+        if (player.equals(image00.getImage())&& TRANSP.equals(image01.getImage())) {
+            image01.setImage(computer);
+        } else {
+
+            randomComputerMove();
+
+        }
+    }
+
+    public void randomComputerMove() {
+        if (TRANSP.equals(image11.getImage())){
+            image11.setImage(computer);
+        } else if (TRANSP.equals(image01.getImage())){
+            image01.setImage(computer);
+        } else if (TRANSP.equals(image10.getImage())){
+            image10.setImage(computer);
+        } else if (TRANSP.equals(image22.getImage())){
+            image22.setImage(computer);
+        } else if (TRANSP.equals(image00.getImage())){
+            image00.setImage(computer);
+        } else if (TRANSP.equals(image02.getImage())){
+            image02.setImage(computer);
+        } else if (TRANSP.equals(image12.getImage())){
+            image12.setImage(computer);
+        } else if (TRANSP.equals(image20.getImage())){
+            image20.setImage(computer);
+        } else if (TRANSP.equals(image21.getImage())){
+            image21.setImage(computer);
+        } else {
+            System.out.println("PROBLEM");
+        }
+        System.out.println("endGame: "+endGame);
+
+    }
+
 }
