@@ -3,8 +3,10 @@ package com.kodilla.first.individual.project.controllers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BackgroundImage;
@@ -22,6 +24,8 @@ public class AppController {
     private final static String RESET = "Nowa gra";
     private static boolean endGame;
     private Image player;
+    private static Integer oScore =0;
+    private static Integer xScore=0;
 
     private MainController mainController;
     @FXML
@@ -44,6 +48,14 @@ public class AppController {
     ImageView image21;
     @FXML
     ImageView image22;
+    @FXML
+    ImageView xImgV;
+    @FXML
+    ImageView oImgV;
+    @FXML
+    Label xLbl;
+    @FXML
+    Label oLbl;
 
     @FXML
     Button playBtn;
@@ -55,7 +67,12 @@ public class AppController {
     public void initialize() {
         choiceBoxInit();
         endGame = true;
-
+        xImgV.setImage(XLETTER);
+        xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+        oImgV.setImage(OLETTER);
+        oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+        oLbl.setText(oScore.toString());
+        xLbl.setText(xScore.toString());
 
     }
 
@@ -199,6 +216,7 @@ public class AppController {
             image00.setImage(changeImage(image00.getImage()));
             image01.setImage(changeImage(image01.getImage()));
             image02.setImage(changeImage(image02.getImage()));
+            addPoint(figure(image00.getImage()));
             endGame = true;
         } else if (image10.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image12.getImage())
@@ -207,6 +225,7 @@ public class AppController {
             image10.setImage(changeImage(image10.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image12.setImage(changeImage(image12.getImage()));
+            addPoint(figure(image10.getImage()));
             endGame = true;
         } else if (image20.getImage().equals(image21.getImage())
                 && image21.getImage().equals(image22.getImage())
@@ -215,6 +234,7 @@ public class AppController {
             image20.setImage(changeImage(image20.getImage()));
             image21.setImage(changeImage(image21.getImage()));
             image22.setImage(changeImage(image22.getImage()));
+            addPoint(figure(image20.getImage()));
             endGame = true;
         } else if (image00.getImage().equals(image10.getImage())
                 && image10.getImage().equals(image20.getImage())
@@ -223,6 +243,7 @@ public class AppController {
             image00.setImage(changeImage(image00.getImage()));
             image10.setImage(changeImage(image10.getImage()));
             image20.setImage(changeImage(image20.getImage()));
+            addPoint(figure(image00.getImage()));
             endGame = true;
         } else if (image01.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image21.getImage())
@@ -231,6 +252,7 @@ public class AppController {
             image01.setImage(changeImage(image01.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image21.setImage(changeImage(image21.getImage()));
+            addPoint(figure(image01.getImage()));
             endGame = true;
         } else if (image02.getImage().equals(image12.getImage())
                 && image12.getImage().equals(image22.getImage())
@@ -239,6 +261,7 @@ public class AppController {
             image02.setImage(changeImage(image02.getImage()));
             image12.setImage(changeImage(image12.getImage()));
             image22.setImage(changeImage(image22.getImage()));
+            addPoint(figure(image02.getImage()));
             endGame = true;
         } else if (image00.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image22.getImage())
@@ -247,6 +270,7 @@ public class AppController {
             image00.setImage(changeImage(image00.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image22.setImage(changeImage(image22.getImage()));
+            addPoint(figure(image00.getImage()));
             endGame = true;
         } else if (image02.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image20.getImage())
@@ -255,8 +279,12 @@ public class AppController {
             image02.setImage(changeImage(image02.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image20.setImage(changeImage(image20.getImage()));
+            addPoint(figure(image02.getImage()));
             endGame = true;
         }
+        //xScore+=1;
+        //xLbl.setText(xScore.toString());
+        //System.out.println(xScore);
 
     }
 
@@ -268,6 +296,23 @@ public class AppController {
         }
     }
 
+    public void addPoint(String figure){
+        if ("x".equals(figure)){
+            xScore+=1;
+            xLbl.setText(xScore.toString());
+        } else {
+            oScore+=1;
+            oLbl.setText(oScore.toString());
+        }
+
+    }
+    public String figure(Image image){
+        if (XLETTER.equals(image)||XLETTERRED.equals(image)) {
+            return "x";
+        } else {
+            return "o";
+        }
+    }
     //ToTO
     //- score
     //popup with endgame
