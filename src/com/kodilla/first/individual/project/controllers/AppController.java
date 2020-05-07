@@ -340,9 +340,7 @@ public class AppController {
             addPoint(figure(image02.getImage()));
             endGame = true;
         }
-        //xScore+=1;
-        //xLbl.setText(xScore.toString());
-        //System.out.println(xScore);
+
 
     }
 
@@ -373,19 +371,13 @@ public class AppController {
         }
     }
 
-    //ToTO
-    //- score
-    //popup with endgame
     public void computerMove() {
-//        int counter = 0;
-//        if (player.equals(image00.getImage()) && TRANSP.equals(image01.getImage())) {
-//            image01.setImage(computer);
-//        } else {
-        blockingStrategyMove();
+
 
         //  randomComputerMove();
+        //blockingStrategyMove();
+        winStrategyMove();
 
-        //  }
     }
 
     public void randomComputerMove() {
@@ -415,8 +407,6 @@ public class AppController {
     }
 
     public void blockingStrategyMove() {
-
-
         if (checkLineToBlock(player, image00, image01, image02).getaBoolean()) {
             checkLineToBlock(player, image00, image01, image02).getImageView().setImage(computer);
         } else if (checkLineToBlock(player, image10, image11, image12).getaBoolean()) {
@@ -437,6 +427,29 @@ public class AppController {
              randomComputerMove();
         }
     }
+
+    public void winStrategyMove(){
+        if (checkLineToBlock(computer, image00, image01, image02).getaBoolean()) {
+            checkLineToBlock(computer, image00, image01, image02).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image10, image11, image12).getaBoolean()) {
+            checkLineToBlock(computer, image10, image11, image12).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image20, image21, image22).getaBoolean()) {
+            checkLineToBlock(computer, image20, image21, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image00, image10, image20).getaBoolean()) {
+            checkLineToBlock(computer, image00, image10, image20).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image01, image11, image21).getaBoolean()) {
+            checkLineToBlock(computer, image01, image11, image21).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image02, image12, image22).getaBoolean()) {
+            checkLineToBlock(computer, image02, image12, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image00, image11, image22).getaBoolean()) {
+            checkLineToBlock(computer, image00, image11, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(computer, image20, image11, image02).getaBoolean()) {
+            checkLineToBlock(computer, image20, image11, image02).getImageView().setImage(computer);
+        } else {
+            blockingStrategyMove();
+        }
+    }
+
 
     public ExtendedImageView checkLineToBlock(Image pattern, ImageView image1, ImageView image2, ImageView image3) {
         int counter = 0;
@@ -465,15 +478,6 @@ public class AppController {
             return new ExtendedImageView(image1, tmpBoolean);
         }
         return new ExtendedImageView(new ImageView(), false);
-    }
-
-
-    public int checkImage(Image pattern, Image image) {
-        if (pattern.equals(image)) {
-            return 1;
-        } else {
-            return 0;
-        }
     }
 
 }
