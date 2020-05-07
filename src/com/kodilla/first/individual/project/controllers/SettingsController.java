@@ -2,7 +2,7 @@ package com.kodilla.first.individual.project.controllers;
 
 import javafx.fxml.FXML;
 
-public class RulesController {
+public class SettingsController {
 
     private MainController mainController;
 

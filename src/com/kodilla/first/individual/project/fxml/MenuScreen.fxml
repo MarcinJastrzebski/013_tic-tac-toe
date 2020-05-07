@@ -6,11 +6,11 @@
 
 <Pane fx:id="menuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodilla.first.individual.project.controllers.MenuController">
    <children>
-      <Button layoutX="47.0" layoutY="221.0" mnemonicParsing="false" onAction="#openApplication" prefHeight="44.0" prefWidth="172.0" text="Nowa gra">
+      <Button layoutX="47.0" layoutY="221.0" mnemonicParsing="false" onAction="#openApplication" prefHeight="44.0" prefWidth="172.0" text="1 Gracz">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="47.0" layoutY="265.0" mnemonicParsing="false" onAction="#openRules" prefHeight="44.0" prefWidth="172.0" text="Zasady">
+      <Button layoutX="47.0" layoutY="265.0" mnemonicParsing="false" onAction="#openRules" prefHeight="44.0" prefWidth="172.0" text="Ustawienia">
          <font>
             <Font size="20.0" />
          </font></Button>

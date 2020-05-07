@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodilla.first.individual.project.controllers.SettingsController">
+   <children>
+      <Label layoutX="170.0" layoutY="14.0" prefHeight="76.0" prefWidth="286.0" text="USTAWIENIA" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font></Label>
+      <Button layoutX="433.0" layoutY="324.0" mnemonicParsing="false" onAction="#backMenu" prefHeight="39.0" prefWidth="142.0" text="Menu">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="45.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="45.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Średni">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="45.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Trudny">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label alignment="CENTER" layoutX="45.0" layoutY="213.0" text="Poziom trudności" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="84.0" prefHeight="27.0" prefWidth="174.0" text="Wybierz czym grasz" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <ChoiceBox layoutX="44.0" layoutY="113.0" prefWidth="150.0" />
+      <BorderPane layoutX="39.0" layoutY="143.0" prefHeight="70.0" prefWidth="159.0">
+         <bottom>
+            <ImageView fitHeight="60.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </bottom></BorderPane>
+      <Button layoutX="433.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="227.0" layoutY="84.0" text="Wybierz kto zaczyna" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="238.0" layoutY="113.0" prefWidth="150.0" />
+      <BorderPane layoutX="222.0" layoutY="143.0" prefHeight="83.0" prefWidth="182.0">
+         <center>
+            <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <Button layoutX="248.0" layoutY="247.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="248.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="248.0" layoutY="324.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="247.0" layoutY="213.0" prefHeight="27.0" prefWidth="131.0" text="Liczba gier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="433.0" layoutY="247.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

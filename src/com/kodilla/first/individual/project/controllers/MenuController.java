@@ -45,16 +45,17 @@ public class MenuController {
 
     @FXML
     public void openRules(){
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/RulesScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/SettingsScreen.fxml"));
         Pane pane = null;
         try {
             pane = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        RulesController rulesController = loader.getController();
-        rulesController.setMainController(mainController);
-        mainController.setScreen(pane);
+        SettingsController settingsController = loader.getController();
+        settingsController.setMainController(mainController);
+        ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
+        mainController.setBackgroundAndScreen(imageView,pane);
     }
 
     public void exit(){
