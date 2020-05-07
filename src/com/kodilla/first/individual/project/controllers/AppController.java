@@ -1,5 +1,6 @@
 package com.kodilla.first.individual.project.controllers;
 
+import com.kodilla.first.individual.project.Logic.ExtendedImageView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -13,6 +14,8 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppController {
     private final static Image OLETTER = new Image("file:resources/o-letter.png");
@@ -76,7 +79,6 @@ public class AppController {
         oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
         xLbl.setText(xScore.toString());
         oLbl.setText(oScore.toString());
-
 
 
     }
@@ -375,40 +377,103 @@ public class AppController {
     //- score
     //popup with endgame
     public void computerMove() {
-        int counter=0;
-        if (player.equals(image00.getImage())&& TRANSP.equals(image01.getImage())) {
-            image01.setImage(computer);
-        } else {
+//        int counter = 0;
+//        if (player.equals(image00.getImage()) && TRANSP.equals(image01.getImage())) {
+//            image01.setImage(computer);
+//        } else {
+        blockingStrategyMove();
 
-            randomComputerMove();
+        //  randomComputerMove();
 
-        }
+        //  }
     }
 
     public void randomComputerMove() {
-        if (TRANSP.equals(image11.getImage())){
+        if (TRANSP.equals(image11.getImage())) {
             image11.setImage(computer);
-        } else if (TRANSP.equals(image01.getImage())){
+        } else if (TRANSP.equals(image01.getImage())) {
             image01.setImage(computer);
-        } else if (TRANSP.equals(image10.getImage())){
+        } else if (TRANSP.equals(image10.getImage())) {
             image10.setImage(computer);
-        } else if (TRANSP.equals(image22.getImage())){
+        } else if (TRANSP.equals(image22.getImage())) {
             image22.setImage(computer);
-        } else if (TRANSP.equals(image00.getImage())){
+        } else if (TRANSP.equals(image00.getImage())) {
             image00.setImage(computer);
-        } else if (TRANSP.equals(image02.getImage())){
+        } else if (TRANSP.equals(image02.getImage())) {
             image02.setImage(computer);
-        } else if (TRANSP.equals(image12.getImage())){
+        } else if (TRANSP.equals(image12.getImage())) {
             image12.setImage(computer);
-        } else if (TRANSP.equals(image20.getImage())){
+        } else if (TRANSP.equals(image20.getImage())) {
             image20.setImage(computer);
-        } else if (TRANSP.equals(image21.getImage())){
+        } else if (TRANSP.equals(image21.getImage())) {
             image21.setImage(computer);
         } else {
             System.out.println("PROBLEM");
         }
-        System.out.println("endGame: "+endGame);
+        System.out.println("endGame: " + endGame);
 
+    }
+
+    public void blockingStrategyMove() {
+
+
+        if (checkLineToBlock(player, image00, image01, image02).getaBoolean()) {
+            checkLineToBlock(player, image00, image01, image02).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image10, image11, image12).getaBoolean()) {
+            checkLineToBlock(player, image10, image11, image12).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image20, image21, image22).getaBoolean()) {
+            checkLineToBlock(player, image20, image21, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image00, image10, image20).getaBoolean()) {
+            checkLineToBlock(player, image00, image10, image20).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image01, image11, image21).getaBoolean()) {
+            checkLineToBlock(player, image01, image11, image21).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image02, image12, image22).getaBoolean()) {
+            checkLineToBlock(player, image02, image12, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image00, image11, image22).getaBoolean()) {
+            checkLineToBlock(player, image00, image11, image22).getImageView().setImage(computer);
+        } else if (checkLineToBlock(player, image20, image11, image02).getaBoolean()) {
+            checkLineToBlock(player, image20, image11, image02).getImageView().setImage(computer);
+        } else {
+             randomComputerMove();
+        }
+    }
+
+    public ExtendedImageView checkLineToBlock(Image pattern, ImageView image1, ImageView image2, ImageView image3) {
+        int counter = 0;
+        boolean tmpBoolean;
+
+        if (pattern.equals(image1.getImage())) {
+            counter += 1;
+        }
+        if (pattern.equals(image2.getImage())) {
+            counter += 1;
+        }
+        if (pattern.equals(image3.getImage())) {
+            counter += 1;
+        }
+        if (counter == 2) {
+            tmpBoolean = true;
+            if (TRANSP.equals(image1.getImage())) {
+                return new ExtendedImageView(image1, tmpBoolean);
+            } else if (TRANSP.equals(image2.getImage())) {
+                return new ExtendedImageView(image2, tmpBoolean);
+            } else if (TRANSP.equals(image3.getImage())) {
+                return new ExtendedImageView(image3, tmpBoolean);
+            }
+        } else {
+            tmpBoolean = false;
+            return new ExtendedImageView(image1, tmpBoolean);
+        }
+        return new ExtendedImageView(new ImageView(), false);
+    }
+
+
+    public int checkImage(Image pattern, Image image) {
+        if (pattern.equals(image)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
 }
