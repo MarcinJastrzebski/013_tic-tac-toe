@@ -18,16 +18,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AppController {
-    private final static Image OLETTER = new Image("file:resources/o-letter.png");
-    private final static Image XLETTER = new Image("file:resources/x-letter.png");
-    private final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
-    private final static Image XLETTERRED = new Image("file:resources/x-letter-red.png");
+    public final static Image OLETTER = new Image("file:resources/o-letter.png");
+    public final static Image XLETTER = new Image("file:resources/x-letter.png");
+    public final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
+    public final static Image XLETTERRED = new Image("file:resources/x-letter-red.png");
     private final static Image TRANSP = new Image("file:resources/transp.png");
     private final static String GRAJ = "Graj!";
     private final static String RESET = "Nowa gra";
     private static boolean endGame;
-    private Image player;
-    private Image computer;
+    public static Image player;
+    public static Image computer;
     private static Integer oScore = 0;
     private static Integer xScore = 0;
     private static Integer numberOfPlayerMoves = 0;
