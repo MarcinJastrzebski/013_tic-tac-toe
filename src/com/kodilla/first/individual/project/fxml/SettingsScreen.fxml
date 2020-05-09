@@ -15,15 +15,15 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="easyBtn" defaultButton="true" layoutX="45.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
+      <Button fx:id="easyBtn" defaultButton="true" layoutX="45.0" layoutY="247.0" mnemonicParsing="false" onAction="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="mediumBtn" layoutX="45.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#mediumOnClick" prefHeight="25.0" prefWidth="148.0" text="Średni">
+      <Button fx:id="mediumBtn" layoutX="45.0" layoutY="285.0" mnemonicParsing="false" onAction="#mediumOnClick" prefHeight="25.0" prefWidth="148.0" text="Średni">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="hardBtn" layoutX="45.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#hardOnClick" prefHeight="25.0" prefWidth="148.0" text="Trudny">
+      <Button fx:id="hardBtn" layoutX="45.0" layoutY="324.0" mnemonicParsing="false" onAction="#hardOnClick" prefHeight="25.0" prefWidth="148.0" text="Trudny">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -41,7 +41,7 @@
          <center>
             <ImageView fx:id="imageViewOfPickedFigure" fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center></BorderPane>
-      <Button defaultButton="true" layoutX="433.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
+      <Button layoutX="433.0" layoutY="247.0" mnemonicParsing="false" onAction="#playSinglePlayer" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
          <font>
             <Font size="18.0" />
          </font>
@@ -57,17 +57,17 @@
             <ImageView fx:id="imageViewOfStartingFigure" fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
-      <Button layoutX="248.0" layoutY="247.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="1">
+      <Button fx:id="oneBtn" layoutX="248.0" layoutY="247.0" mnemonicParsing="false" onAction="#oneOnClick" prefHeight="39.0" prefWidth="131.0" text="1">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="3">
+      <Button fx:id="threeBtn" defaultButton="true" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" onAction="#threeOnClick" prefHeight="39.0" prefWidth="131.0" text="3">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="248.0" layoutY="324.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" text="5">
+      <Button fx:id="fiveBtn" layoutX="248.0" layoutY="324.0" mnemonicParsing="false" onAction="#fiveOnClick" prefHeight="39.0" prefWidth="131.0" text="5">
          <font>
             <Font size="18.0" />
          </font>
@@ -77,7 +77,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="433.0" layoutY="247.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
+      <Button fx:id="resetBtn" layoutX="433.0" layoutY="207.0" mnemonicParsing="false" onMouseEntered="#resetScoreIn" onMouseExited="#resetScoreOut" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button disable="true" layoutX="433.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj duo">
          <font>
             <Font size="18.0" />
          </font>

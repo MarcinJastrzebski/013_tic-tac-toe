@@ -25,6 +25,18 @@ public class SettingsController {
     Button mediumBtn;
     @FXML
     Button hardBtn;
+    @FXML
+    Button oneBtn;
+    @FXML
+    Button threeBtn;
+    @FXML
+    Button fiveBtn;
+    @FXML
+    Button resetBtn;
+    @FXML
+    Button playBtn;
+    @FXML
+    Button menuBtn;
 
     @FXML
     public void backMenu(){
@@ -58,6 +70,38 @@ public class SettingsController {
         easyBtn.setDefaultButton(false);
         mediumBtn.setDefaultButton(false);
         hardBtn.setDefaultButton(true);
+    }
+    @FXML
+    public void oneOnClick(){
+        oneBtn.setDefaultButton(true);
+        threeBtn.setDefaultButton(false);
+        fiveBtn.setDefaultButton(false);
+    }
+    @FXML
+    public void threeOnClick(){
+        oneBtn.setDefaultButton(false);
+        threeBtn.setDefaultButton(true);
+        fiveBtn.setDefaultButton(false);
+    }
+    @FXML
+    public void fiveOnClick(){
+        oneBtn.setDefaultButton(false);
+        threeBtn.setDefaultButton(false);
+        fiveBtn.setDefaultButton(true);
+    }
+    @FXML
+    public void playSinglePlayer(){
+
+    }
+    @FXML
+    public void resetScoreIn(){
+        //Button button = this.getClass().
+        resetBtn.setDefaultButton(true);
+    }
+    @FXML
+    public void resetScoreOut(){
+        //Button button = this.getClass().
+        resetBtn.setDefaultButton(false);
     }
 
 
