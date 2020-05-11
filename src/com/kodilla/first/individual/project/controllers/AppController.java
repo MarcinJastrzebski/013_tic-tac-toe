@@ -183,22 +183,22 @@ public class AppController {
     }
 
     public void computerMoveWithThread() {
-        if (!endGame) {
+//        if (!endGame) {
 //            new Thread(() -> {
 //                try {
 //                    Thread.sleep(100);
 //                    computerMove();
-//
+//                    checkLine();
 //                } catch (InterruptedException e) {
 //                    e.printStackTrace();
 //                }
 //            }).start();
-//            checkLine();
+//            //checkLine();
 
             computerMove();
             checkLine();
 
-        }
+       // }
 
     }
 
@@ -258,6 +258,9 @@ public class AppController {
 
     public void checkLine() {
         System.out.println("Sprawdzam linię");
+        if (endGame){
+            return;
+        }
         if (image00.getImage().equals(image01.getImage())
                 && image01.getImage().equals(image02.getImage())
                 && !TRANSP.equals(image00.getImage())) {
@@ -374,7 +377,7 @@ public class AppController {
     public void computerMove() {
 
 
-        //  randomComputerMove();
+        //randomComputerMove();
         //blockingStrategyMove();
         winStrategyMove();
 
