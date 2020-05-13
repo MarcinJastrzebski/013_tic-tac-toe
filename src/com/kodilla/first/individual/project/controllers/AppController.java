@@ -341,12 +341,10 @@ public class AppController {
             addPoint(figure(image02.getImage()));
             endGame = true;
         }
-
-
     }
 
     public Image changeImage(Image image) {
-        if (XLETTER.equals(image)) {
+        if (XLETTER.getUrl().equals(image.getUrl())) {
             return XLETTERRED;
         } else {
             return OLETTERRED;
