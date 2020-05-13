@@ -11,12 +11,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.Pane;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AppController {
     public final static Image OLETTER = new Image("file:resources/o-letter.png");
@@ -85,8 +79,6 @@ public class AppController {
         oLbl.setText(oScore.toString());
 
         testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
-        //testLbl.setText("chuj");
-
     }
 
 
