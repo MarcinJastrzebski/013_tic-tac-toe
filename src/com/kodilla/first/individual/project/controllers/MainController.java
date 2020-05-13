@@ -54,6 +54,20 @@ public class MainController {
         //mainController.setScreen(pane);
     }
 
+    public void loadSettingsScreen(){
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/SettingsScreen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SettingsController settingsController = loader.getController();
+        settingsController.setMainController(this);
+        ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
+        setBackgroundAndScreen(imageView,pane);
+    }
+
     public void setScreen(Pane pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(pane);
