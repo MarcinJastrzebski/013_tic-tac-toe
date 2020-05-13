@@ -201,9 +201,8 @@ public class SettingsController {
         choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.getInstance().getComputerRed()));
         imageViewOfStartingFigure.setImage(Settings.getInstance().getComputerRed());
 
-
-        AppController.player = AppController.XLETTER;
-        AppController.computer = AppController.OLETTER;
+        Settings.getInstance().setPlayer(Settings.XLETTER);
+        Settings.getInstance().setComputer(Settings.OLETTER);
 
         choiceBoxOfStartingFigure.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override

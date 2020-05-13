@@ -13,20 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class AppController {
-    public final static Image OLETTER = new Image("file:resources/o-letter.png");
-    public final static Image XLETTER = new Image("file:resources/x-letter.png");
-    public final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
-    public final static Image XLETTERRED = new Image("file:resources/x-letter-red.png");
-    private final static Image TRANSP = new Image("file:resources/transp.png");
-    private final static String GRAJ = "Graj!";
-    private final static String RESET = "Nowa gra";
-    private static boolean endGame;
-    public static Image player;
-    public static Image computer;
-    private static Integer oScore = 0;
-    private static Integer xScore = 0;
-    private static Integer numberOfPlayerMoves = 0;
-    private static Integer numberOfComputerMoves = 0;
 
     private MainController mainController;
     @FXML
@@ -69,14 +55,13 @@ public class AppController {
 
     @FXML
     public void initialize() {
-        choiceBoxInit();
-        endGame = true;
-        xImgV.setImage(XLETTER);
+        //choiceBoxInit();
+        xImgV.setImage(Settings.XLETTER);
         xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-        oImgV.setImage(OLETTER);
+        oImgV.setImage(Settings.OLETTER);
         oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-        xLbl.setText(xScore.toString());
-        oLbl.setText(oScore.toString());
+        xLbl.setText(Settings.getInstance().getxScore().toString());
+        oLbl.setText(Settings.getInstance().getoScore().toString());
 
         testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
     }
@@ -89,11 +74,11 @@ public class AppController {
 
     @FXML
     public void image00Clicked() {
-        if (!endGame && TRANSP.equals(image00.getImage())) {
-            image00.setImage(player);
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image00.getImage())) {
+            image00.setImage(Settings.getInstance().getPlayer());
             System.out.println("image " + image00.getImage());
-            System.out.println("player " + player);
-            System.out.println("xletter" + XLETTER.equals(image00.getImage()));
+            System.out.println("player " + Settings.getInstance().getPlayer());
+            System.out.println("xletter" + Settings.XLETTER.equals(image00.getImage()));
             checkLine();
 
             computerMoveWithThread();
@@ -102,8 +87,8 @@ public class AppController {
 
     @FXML
     public void image01Clicked() {
-        if (!endGame && TRANSP.equals(image01.getImage())) {
-            image01.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image01.getImage())) {
+            image01.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -112,8 +97,8 @@ public class AppController {
 
     @FXML
     public void image02Clicked() {
-        if (!endGame && TRANSP.equals(image02.getImage())) {
-            image02.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image02.getImage())) {
+            image02.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -122,8 +107,8 @@ public class AppController {
 
     @FXML
     public void image10Clicked() {
-        if (!endGame && TRANSP.equals(image10.getImage())) {
-            image10.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image10.getImage())) {
+            image10.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -132,8 +117,8 @@ public class AppController {
 
     @FXML
     public void image11Clicked() {
-        if (!endGame && TRANSP.equals(image11.getImage())) {
-            image11.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image11.getImage())) {
+            image11.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -142,8 +127,8 @@ public class AppController {
 
     @FXML
     public void image12Clicked() {
-        if (!endGame && TRANSP.equals(image12.getImage())) {
-            image12.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image12.getImage())) {
+            image12.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -152,8 +137,8 @@ public class AppController {
 
     @FXML
     public void image20Clicked() {
-        if (!endGame && TRANSP.equals(image20.getImage())) {
-            image20.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image20.getImage())) {
+            image20.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -162,8 +147,8 @@ public class AppController {
 
     @FXML
     public void image21Clicked() {
-        if (!endGame && TRANSP.equals(image21.getImage())) {
-            image21.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image21.getImage())) {
+            image21.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -172,8 +157,8 @@ public class AppController {
 
     @FXML
     public void image22Clicked() {
-        if (!endGame && TRANSP.equals(image22.getImage())) {
-            image22.setImage(player);
+        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image22.getImage())) {
+            image22.setImage(Settings.getInstance().getPlayer());
             checkLine();
 
             computerMoveWithThread();
@@ -207,47 +192,43 @@ public class AppController {
     @FXML
     public void play() {
 
-        if (GRAJ.equals(playBtn.getText())) {
-            choiceBox.setVisible(false);
-            endGame = false;
-            playBtn.setText(RESET);
-        } else {
-            choiceBox.setVisible(true);
-            playBtn.setText(GRAJ);
-            endGame = true;
-        }
+        choiceBox.setVisible(false);
+        Settings.getInstance().setEndGame(false);
 
-        image00.setImage(TRANSP);
+
+
+        image00.setImage(Settings.TRANSP);
         //image00.setScaleX(0.1);
-        image01.setImage(TRANSP);
-        image02.setImage(TRANSP);
-        image10.setImage(TRANSP);
-        image11.setImage(TRANSP);
-        image12.setImage(TRANSP);
-        image20.setImage(TRANSP);
-        image21.setImage(TRANSP);
-        image22.setImage(TRANSP);
+        image01.setImage(Settings.TRANSP);
+        image02.setImage(Settings.TRANSP);
+        image10.setImage(Settings.TRANSP);
+        image11.setImage(Settings.TRANSP);
+        image12.setImage(Settings.TRANSP);
+        image20.setImage(Settings.TRANSP);
+        image21.setImage(Settings.TRANSP);
+        image22.setImage(Settings.TRANSP);
     }
 
     private void choiceBoxInit() {
         choiceBox.getItems().add("Kółko");
         choiceBox.getItems().add("Krzyżyk");
         choiceBox.setValue("Krzyżyk");
-        testImage.setImage(XLETTER);
-        player = XLETTER;
-        computer = OLETTER;
+        testImage.setImage(Settings.XLETTER);
+        Settings.getInstance().setPlayer(Settings.XLETTER);
+        Settings.getInstance().setComputer(Settings.OLETTER);
         choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 System.out.println(choiceBox.getItems().get((Integer) t1));
                 if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))) {
-                    testImage.setImage(XLETTER);
-                    player = XLETTER;
-                    computer = OLETTER;
+                    testImage.setImage(Settings.XLETTER);
+                    Settings.getInstance().setPlayer(Settings.XLETTER);
+                    Settings.getInstance().setComputer(Settings.OLETTER);
+
                 } else {
-                    testImage.setImage(OLETTER);
-                    player = OLETTER;
-                    computer = XLETTER;
+                    testImage.setImage(Settings.OLETTER);
+                    Settings.getInstance().setPlayer(Settings.OLETTER);
+                    Settings.getInstance().setComputer(Settings.XLETTER);
                 }
             }
 
@@ -256,12 +237,12 @@ public class AppController {
 
     public void checkLine() {
         System.out.println("Sprawdzam linię");
-        if (endGame){
+        if (Settings.getInstance().isEndGame() ){
             return;
         }
         if (image00.getImage().equals(image01.getImage())
                 && image01.getImage().equals(image02.getImage())
-                && !TRANSP.equals(image00.getImage())) {
+                && !Settings.TRANSP.equals(image00.getImage())) {
             System.out.println("LINIA BB");
             image00.setImage(changeImage(image00.getImage()));
             System.out.println("B1");
@@ -274,96 +255,96 @@ public class AppController {
             addPoint(figure(image00.getImage()));
             System.out.println("B4");
 
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
             System.out.println("B5");
 
         } else if (image10.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image12.getImage())
-                && !TRANSP.equals(image10.getImage())) {
+                && !Settings.TRANSP.equals(image10.getImage())) {
             System.out.println("LINIA");
             image10.setImage(changeImage(image10.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image12.setImage(changeImage(image12.getImage()));
             addPoint(figure(image10.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image20.getImage().equals(image21.getImage())
                 && image21.getImage().equals(image22.getImage())
-                && !TRANSP.equals(image20.getImage())) {
+                && !Settings.TRANSP.equals(image20.getImage())) {
             System.out.println("LINIA");
             image20.setImage(changeImage(image20.getImage()));
             image21.setImage(changeImage(image21.getImage()));
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image20.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image00.getImage().equals(image10.getImage())
                 && image10.getImage().equals(image20.getImage())
-                && !TRANSP.equals(image00.getImage())) {
+                && !Settings.TRANSP.equals(image00.getImage())) {
             System.out.println("LINIA");
             image00.setImage(changeImage(image00.getImage()));
             image10.setImage(changeImage(image10.getImage()));
             image20.setImage(changeImage(image20.getImage()));
             addPoint(figure(image00.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image01.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image21.getImage())
-                && !TRANSP.equals(image01.getImage())) {
+                && !Settings.TRANSP.equals(image01.getImage())) {
             System.out.println("LINIA");
             image01.setImage(changeImage(image01.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image21.setImage(changeImage(image21.getImage()));
             addPoint(figure(image01.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image02.getImage().equals(image12.getImage())
                 && image12.getImage().equals(image22.getImage())
-                && !TRANSP.equals(image02.getImage())) {
+                && !Settings.TRANSP.equals(image02.getImage())) {
             System.out.println("LINIA");
             image02.setImage(changeImage(image02.getImage()));
             image12.setImage(changeImage(image12.getImage()));
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image02.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image00.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image22.getImage())
-                && !TRANSP.equals(image00.getImage())) {
+                && !Settings.TRANSP.equals(image00.getImage())) {
             System.out.println("LINIA");
             image00.setImage(changeImage(image00.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image00.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         } else if (image02.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image20.getImage())
-                && !TRANSP.equals(image02.getImage())) {
+                && !Settings.TRANSP.equals(image02.getImage())) {
             System.out.println("LINIA");
             image02.setImage(changeImage(image02.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image20.setImage(changeImage(image20.getImage()));
             addPoint(figure(image02.getImage()));
-            endGame = true;
+            Settings.getInstance().setEndGame(true);
         }
     }
 
     public Image changeImage(Image image) {
-        if (XLETTER.getUrl().equals(image.getUrl())) {
-            return XLETTERRED;
+        if (Settings.XLETTER.getUrl().equals(image.getUrl())) {
+            return Settings.XLETTERRED;
         } else {
-            return OLETTERRED;
+            return Settings.OLETTERRED;
         }
     }
 
     public void addPoint(String figure) {
         if ("x".equals(figure)) {
-            xScore += 1;
-            xLbl.setText(xScore.toString());
+            Settings.getInstance().setxScore(Settings.getInstance().getxScore()+1);
+            xLbl.setText(Settings.getInstance().getxScore().toString());
         } else {
-            oScore += 1;
-            oLbl.setText(oScore.toString());
+            Settings.getInstance().setoScore(Settings.getInstance().getoScore()+1);
+            oLbl.setText(Settings.getInstance().getoScore().toString());
         }
 
     }
 
     public String figure(Image image) {
-        if (XLETTER.equals(image) || XLETTERRED.equals(image)) {
+        if (Settings.XLETTER.equals(image) || Settings.XLETTERRED.equals(image)) {
             return "x";
         } else {
             return "o";
@@ -383,32 +364,37 @@ public class AppController {
     }
 
     public void randomComputerMove() {
-        if (TRANSP.equals(image11.getImage())) {
+        Image computer = Settings.getInstance().getComputer();
+
+
+        if (Settings.TRANSP.equals(image11.getImage())) {
             image11.setImage(computer);
-        } else if (TRANSP.equals(image01.getImage())) {
+        } else if (Settings.TRANSP.equals(image01.getImage())) {
             image01.setImage(computer);
-        } else if (TRANSP.equals(image10.getImage())) {
+        } else if (Settings.TRANSP.equals(image10.getImage())) {
             image10.setImage(computer);
-        } else if (TRANSP.equals(image22.getImage())) {
+        } else if (Settings.TRANSP.equals(image22.getImage())) {
             image22.setImage(computer);
-        } else if (TRANSP.equals(image00.getImage())) {
+        } else if (Settings.TRANSP.equals(image00.getImage())) {
             image00.setImage(computer);
-        } else if (TRANSP.equals(image02.getImage())) {
+        } else if (Settings.TRANSP.equals(image02.getImage())) {
             image02.setImage(computer);
-        } else if (TRANSP.equals(image12.getImage())) {
+        } else if (Settings.TRANSP.equals(image12.getImage())) {
             image12.setImage(computer);
-        } else if (TRANSP.equals(image20.getImage())) {
+        } else if (Settings.TRANSP.equals(image20.getImage())) {
             image20.setImage(computer);
-        } else if (TRANSP.equals(image21.getImage())) {
+        } else if (Settings.TRANSP.equals(image21.getImage())) {
             image21.setImage(computer);
         } else {
             System.out.println("PROBLEM");
         }
-        System.out.println("endGame: " + endGame);
+        System.out.println("endGame: " + Settings.getInstance().isEndGame() );
 
     }
 
     public void blockingStrategyMove() {
+        Image player = Settings.getInstance().getPlayer();
+        Image computer = Settings.getInstance().getComputer();
         if (checkLineToBlock(player, image00, image01, image02).getaBoolean()) {
             checkLineToBlock(player, image00, image01, image02).getImageView().setImage(computer);
         } else if (checkLineToBlock(player, image10, image11, image12).getaBoolean()) {
@@ -431,6 +417,7 @@ public class AppController {
     }
 
     public void winStrategyMove(){
+        Image computer = Settings.getInstance().getComputer();
         if (checkLineToBlock(computer, image00, image01, image02).getaBoolean()) {
             checkLineToBlock(computer, image00, image01, image02).getImageView().setImage(computer);
         } else if (checkLineToBlock(computer, image10, image11, image12).getaBoolean()) {
@@ -468,11 +455,11 @@ public class AppController {
         }
         if (counter == 2) {
             tmpBoolean = true;
-            if (TRANSP.equals(image1.getImage())) {
+            if (Settings.TRANSP.equals(image1.getImage())) {
                 return new ExtendedImageView(image1, tmpBoolean);
-            } else if (TRANSP.equals(image2.getImage())) {
+            } else if (Settings.TRANSP.equals(image2.getImage())) {
                 return new ExtendedImageView(image2, tmpBoolean);
-            } else if (TRANSP.equals(image3.getImage())) {
+            } else if (Settings.TRANSP.equals(image3.getImage())) {
                 return new ExtendedImageView(image3, tmpBoolean);
             }
         } else {

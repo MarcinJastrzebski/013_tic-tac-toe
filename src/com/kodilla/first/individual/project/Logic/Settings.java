@@ -18,7 +18,7 @@ public final class Settings {
     public final static String XLETTERSTRING = "Krzyżyk";
     public final static String OLETTERSTRING = "Kółko";
 
-    private boolean endGame = true;
+    private boolean endGame = false;
     private Image player = XLETTER;
     private Image playerRed = XLETTERRED;
     private Image computer = OLETTER;
