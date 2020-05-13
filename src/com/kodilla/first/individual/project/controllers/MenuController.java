@@ -22,25 +22,8 @@ public class MenuController {
     }
 
     @FXML
-    public void openApplication(){
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/AppScreen.fxml"));
-        Pane pane = null;
-        try {
-            pane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        AppController appController = loader.getController();
-        appController.setMainController(mainController);
-        ImageView imageView = new ImageView(new Image("file:resources/woodenBcg.jpg"));
-        //  imageView.setScaleX(1.1);
-        imageView.setFitHeight(400);
-        imageView.setY(130);
-        mainController.setBackgroundAndScreen(imageView, pane);
-        //mainController.setScreen(pane);
-
-
-
+    public void playSinglePlayer(){
+        mainController.loadSinglePlayerScreen();
     }
 
     @FXML
