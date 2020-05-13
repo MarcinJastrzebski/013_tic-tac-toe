@@ -65,4 +65,5 @@ public class MenuController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
 }

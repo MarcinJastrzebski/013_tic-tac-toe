@@ -1,6 +1,7 @@
 package com.kodilla.first.individual.project.controllers;
 
 import com.kodilla.first.individual.project.Logic.ExtendedImageView;
+import com.kodilla.first.individual.project.Logic.Settings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -67,6 +68,9 @@ public class AppController {
     Button playBtn;
 
     @FXML
+    Label testLbl;
+
+    @FXML
     private ImageView testImage;
 
     @FXML
@@ -80,6 +84,8 @@ public class AppController {
         xLbl.setText(xScore.toString());
         oLbl.setText(oScore.toString());
 
+        testLbl.setText(Settings.getInstance().getLevel().toString());
+        //testLbl.setText("chuj");
 
     }
 

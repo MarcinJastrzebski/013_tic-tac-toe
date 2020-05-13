@@ -1,5 +1,6 @@
 package com.kodilla.first.individual.project.controllers;
 
+import com.kodilla.first.individual.project.Logic.Settings;
 import com.kodilla.first.individual.project.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -64,18 +65,21 @@ public class SettingsController {
         easyBtn.setDefaultButton(true);
         mediumBtn.setDefaultButton(false);
         hardBtn.setDefaultButton(false);
+        Settings.getInstance().setLevel(1);
     }
     @FXML
     public void mediumOnClick(){
         easyBtn.setDefaultButton(false);
         mediumBtn.setDefaultButton(true);
         hardBtn.setDefaultButton(false);
+        Settings.getInstance().setLevel(2);
     }
     @FXML
     public void hardOnClick(){
         easyBtn.setDefaultButton(false);
         mediumBtn.setDefaultButton(false);
         hardBtn.setDefaultButton(true);
+        Settings.getInstance().setLevel(3);
     }
     @FXML
     public void oneOnClick(){
