@@ -2,7 +2,6 @@ package com.kodilla.first.individual.project.controllers;
 
 import java.io.IOException;
 
-import com.kodilla.first.individual.project.Logic.Settings;
 import com.kodilla.first.individual.project.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +12,8 @@ import javafx.scene.layout.StackPane;
 
 
 public class MainController {
-
     @FXML
     private StackPane mainStackPane;
-
 
     @FXML
     public void initialize() {
@@ -36,7 +33,7 @@ public class MainController {
         setScreen(pane);
     }
 
-    public void loadSinglePlayerScreen(){
+    public void loadSinglePlayerScreen() {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/AppScreen.fxml"));
         Pane pane = null;
         try {
@@ -54,7 +51,7 @@ public class MainController {
         //mainController.setScreen(pane);
     }
 
-    public void loadSettingsScreen(){
+    public void loadSettingsScreen() {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/SettingsScreen.fxml"));
         Pane pane = null;
         try {
@@ -65,7 +62,7 @@ public class MainController {
         SettingsController settingsController = loader.getController();
         settingsController.setMainController(this);
         ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
-        setBackgroundAndScreen(imageView,pane);
+        setBackgroundAndScreen(imageView, pane);
     }
 
     public void setScreen(Pane pane) {
@@ -77,10 +74,10 @@ public class MainController {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(imageView);
     }
+
     public void setBackgroundAndScreen(ImageView imageView, Pane pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(imageView);
         mainStackPane.getChildren().add(pane);
     }
-
 }

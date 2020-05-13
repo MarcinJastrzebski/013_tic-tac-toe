@@ -12,6 +12,11 @@ public final class Settings {
     public final static Image XLETTER = new Image("file:resources/x-letter.png");
     public final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
     public final static Image XLETTERRED = new Image("file:resources/x-letter-red.png");
+
+    public final static String XLETTERSTRING = "Krzyżyk";
+    public final static String OLETTERSTRING = "Kółko";
+
+
     private final static Image TRANSP = new Image("file:resources/transp.png");
     private final static String GRAJ = "Graj!";
     private final static String RESET = "Nowa gra";
@@ -19,7 +24,10 @@ public final class Settings {
 
     private boolean endGame;
     private Image player = XLETTER;
+    private Image playerRed = XLETTERRED;
     private Image computer = OLETTER;
+    private Image computerRed = OLETTERRED;
+    private Image startingFigure = XLETTER;
 
 
     private Integer oScore = 0;
@@ -41,6 +49,46 @@ public final class Settings {
             }
         }
         return settings;
+    }
+
+    public Image getStartingFigure() {
+        return startingFigure;
+    }
+
+    public void setStartingFigure(Image startingFigure) {
+        this.startingFigure = startingFigure;
+    }
+
+    public Image getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Image player) {
+        this.player = player;
+    }
+
+    public Image getComputer() {
+        return computer;
+    }
+
+    public void setComputer(Image computer) {
+        this.computer = computer;
+    }
+
+    public Image getPlayerRed() {
+        return playerRed;
+    }
+
+    public void setPlayerRed(Image playerRed) {
+        this.playerRed = playerRed;
+    }
+
+    public Image getComputerRed() {
+        return computerRed;
+    }
+
+    public void setComputerRed(Image computerRed) {
+        this.computerRed = computerRed;
     }
 
     public Integer getoScore() {
@@ -89,5 +137,13 @@ public final class Settings {
 
     public void setNumberOfGames(Integer numberOfGames) {
         this.numberOfGames = numberOfGames;
+    }
+
+    public String getNameOfImage(Image image){
+        if (XLETTER.equals(image)||XLETTERRED.equals(image)){
+            return XLETTERSTRING;
+        } else {
+            return OLETTERSTRING;
+        }
     }
 }
