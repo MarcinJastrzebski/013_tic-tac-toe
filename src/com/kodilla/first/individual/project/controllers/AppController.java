@@ -84,7 +84,7 @@ public class AppController {
         xLbl.setText(xScore.toString());
         oLbl.setText(oScore.toString());
 
-        testLbl.setText(Settings.getInstance().getLevel().toString());
+        testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
         //testLbl.setText("chuj");
 
     }
@@ -381,12 +381,15 @@ public class AppController {
     }
 
     public void computerMove() {
-
-
-        //randomComputerMove();
-        //blockingStrategyMove();
-        winStrategyMove();
-
+        if (Settings.HARD.equals(Settings.getInstance().getLevel())){
+            winStrategyMove();
+        } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())){
+            blockingStrategyMove();
+        } else if (Settings.EASY.equals(Settings.getInstance().getLevel())){
+            randomComputerMove();
+        } else  {
+            randomComputerMove();
+        }
     }
 
     public void randomComputerMove() {

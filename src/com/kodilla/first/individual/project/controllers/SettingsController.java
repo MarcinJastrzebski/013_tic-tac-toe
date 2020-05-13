@@ -41,12 +41,13 @@ public class SettingsController {
     @FXML
     Button resetBtn;
     @FXML
-    Button playBtn;
+    Button playSinglePlayerBtn;
     @FXML
     Button menuBtn;
 
     @FXML
     public void backMenu(){
+
         mainController.loadMenuScreen();
 
     }
@@ -54,6 +55,7 @@ public class SettingsController {
     @FXML
     public void initialize() {
         choiceBoxInit();
+        menuInit();
     }
 
     public void setMainController(MainController mainController) {
@@ -65,39 +67,44 @@ public class SettingsController {
         easyBtn.setDefaultButton(true);
         mediumBtn.setDefaultButton(false);
         hardBtn.setDefaultButton(false);
-        Settings.getInstance().setLevel(1);
+        Settings.getInstance().setLevel(Settings.EASY);
     }
     @FXML
     public void mediumOnClick(){
         easyBtn.setDefaultButton(false);
         mediumBtn.setDefaultButton(true);
         hardBtn.setDefaultButton(false);
-        Settings.getInstance().setLevel(2);
+        Settings.getInstance().setLevel(Settings.MEDIUM);
     }
     @FXML
     public void hardOnClick(){
         easyBtn.setDefaultButton(false);
         mediumBtn.setDefaultButton(false);
         hardBtn.setDefaultButton(true);
-        Settings.getInstance().setLevel(3);
+        Settings.getInstance().setLevel(Settings.HARD);
     }
     @FXML
     public void oneOnClick(){
         oneBtn.setDefaultButton(true);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(false);
+        Settings.getInstance().setNumberOfGames(1);
     }
     @FXML
     public void threeOnClick(){
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(true);
         fiveBtn.setDefaultButton(false);
+        Settings.getInstance().setNumberOfGames(3);
+
     }
     @FXML
     public void fiveOnClick(){
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(true);
+        Settings.getInstance().setNumberOfGames(5);
+
     }
     @FXML
     public void playSinglePlayer(){
@@ -118,14 +125,49 @@ public class SettingsController {
         //mainController.setScreen(pane);
     }
     @FXML
-    public void resetScoreIn(){
+    public void scoreBtnMouseEntered(){
         //Button button = this.getClass().
         resetBtn.setDefaultButton(true);
     }
     @FXML
-    public void resetScoreOut(){
+    public void scoreBtnMouseExited(){
         //Button button = this.getClass().
         resetBtn.setDefaultButton(false);
+    }
+    @FXML
+    public void playSinglePlayerBtnMouseEntered(){
+        playSinglePlayerBtn.setDefaultButton(true);
+    }
+    @FXML
+    public void playSinglePlayerBtnMouseExited(){
+        playSinglePlayerBtn.setDefaultButton(false);
+    }
+    @FXML
+    public void menuBtnMouseEntered(){
+        menuBtn.setDefaultButton(true);
+    }
+    @FXML
+    public void menuBtnMouseExited(){
+        menuBtn.setDefaultButton(false);
+    }
+
+
+    public void menuInit() {
+        if (Settings.HARD.equals(Settings.getInstance().getLevel())) {
+            hardBtn.setDefaultButton(true);
+        } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())) {
+            mediumBtn.setDefaultButton(true);
+        } else if (Settings.EASY.equals(Settings.getInstance().getLevel())) {
+            easyBtn.setDefaultButton(true);
+        }
+        if (Settings.getInstance().getNumberOfGames()==1) {
+            oneBtn.setDefaultButton(true);
+        } else if (Settings.getInstance().getNumberOfGames()==3) {
+            threeBtn.setDefaultButton(true);
+        } else if (Settings.getInstance().getNumberOfGames()==5) {
+            fiveBtn.setDefaultButton(true);
+        }
+
     }
 
 

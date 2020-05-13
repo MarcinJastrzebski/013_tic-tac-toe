@@ -11,11 +11,11 @@
          <font>
             <Font size="48.0" />
          </font></Label>
-      <Button layoutX="433.0" layoutY="324.0" mnemonicParsing="false" onAction="#backMenu" prefHeight="39.0" prefWidth="142.0" text="Menu">
+      <Button fx:id="menuBtn" layoutX="433.0" layoutY="324.0" mnemonicParsing="false" onAction="#backMenu" onMouseEntered="#menuBtnMouseEntered" onMouseExited="#menuBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Menu">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="easyBtn" defaultButton="true" layoutX="45.0" layoutY="247.0" mnemonicParsing="false" onAction="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
+      <Button fx:id="easyBtn" layoutX="45.0" layoutY="247.0" mnemonicParsing="false" onAction="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -41,7 +41,7 @@
          <center>
             <ImageView fx:id="imageViewOfPickedFigure" fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center></BorderPane>
-      <Button layoutX="433.0" layoutY="247.0" mnemonicParsing="false" onAction="#playSinglePlayer" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
+      <Button fx:id="playSinglePlayerBtn" layoutX="433.0" layoutY="247.0" mnemonicParsing="false" onAction="#playSinglePlayer" onMouseEntered="#playSinglePlayerBtnMouseEntered" onMouseExited="#playSinglePlayerBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,7 +62,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="threeBtn" defaultButton="true" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" onAction="#threeOnClick" prefHeight="39.0" prefWidth="131.0" text="3">
+      <Button fx:id="threeBtn" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" onAction="#threeOnClick" prefHeight="39.0" prefWidth="131.0" text="3">
          <font>
             <Font size="18.0" />
          </font>
@@ -77,7 +77,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="433.0" layoutY="207.0" mnemonicParsing="false" onMouseEntered="#resetScoreIn" onMouseExited="#resetScoreOut" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
+      <Button fx:id="resetBtn" layoutX="433.0" layoutY="207.0" mnemonicParsing="false" onMouseEntered="#scoreBtnMouseEntered" onMouseExited="#scoreBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
          <font>
             <Font size="18.0" />
          </font>

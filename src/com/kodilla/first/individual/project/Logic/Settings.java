@@ -4,6 +4,10 @@ import javafx.scene.image.Image;
 
 public final class Settings {
     private static Settings settings =null;
+    public final static Integer EASY = 1;
+    public final static Integer MEDIUM = 2;
+    public final static Integer HARD = 3;
+
     public final static Image OLETTER = new Image("file:resources/o-letter.png");
     public final static Image XLETTER = new Image("file:resources/x-letter.png");
     public final static Image OLETTERRED = new Image("file:resources/o-letter-red.png");
@@ -11,14 +15,19 @@ public final class Settings {
     private final static Image TRANSP = new Image("file:resources/transp.png");
     private final static String GRAJ = "Graj!";
     private final static String RESET = "Nowa gra";
-    private static boolean endGame;
-    private static Image player;
-    private static Image computer;
+
+
+    private boolean endGame;
+    private Image player = XLETTER;
+    private Image computer = OLETTER;
+
+
     private Integer oScore = 0;
     private Integer xScore = 0;
     private Integer numberOfPlayerMoves = 0;
     private Integer numberOfComputerMoves = 0;
     private Integer level = 1;
+    private Integer numberOfGames =3;
 
     private Settings() {
     }
@@ -72,5 +81,13 @@ public final class Settings {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public Integer getNumberOfGames() {
+        return numberOfGames;
+    }
+
+    public void setNumberOfGames(Integer numberOfGames) {
+        this.numberOfGames = numberOfGames;
     }
 }
