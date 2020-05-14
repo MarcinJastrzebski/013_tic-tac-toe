@@ -4,9 +4,12 @@ import com.kodilla.first.individual.project.Logic.Settings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 
 public class SettingsController {
@@ -38,6 +41,43 @@ public class SettingsController {
     Button playSinglePlayerBtn;
     @FXML
     Button menuBtn;
+    @FXML
+    ImageView xImgV;
+    @FXML
+    ImageView oImgV;
+    @FXML
+    Label xLbl;
+    @FXML
+    Label oLbl;
+
+    public void initScoreBoard() {
+        //scoreLbl.setTextFill(Color.web("#000000", 1));
+
+        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
+            xImgV.setImage(Settings.XLETTERRED);
+            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+            xLbl.setText(Settings.getInstance().getxScore().toString());
+            xLbl.setTextFill(Color.web("#88001b", 1));
+
+            oImgV.setImage(Settings.OLETTER);
+            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+            oLbl.setText(Settings.getInstance().getoScore().toString());
+            oLbl.setTextFill(Color.web("#000000", 1));
+
+
+        } else {
+            xImgV.setImage(Settings.XLETTER);
+            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+            xLbl.setText(Settings.getInstance().getxScore().toString());
+            xLbl.setTextFill(Color.web("#000000", 1));
+
+            oImgV.setImage(Settings.OLETTERRED);
+            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
+            oLbl.setText(Settings.getInstance().getoScore().toString());
+            oLbl.setTextFill(Color.web("#88001b", 1));
+        }
+
+    }
 
     @FXML
     public void backMenu() {
@@ -51,8 +91,10 @@ public class SettingsController {
 
     @FXML
     public void initialize() {
+        initScoreBoard();
         choiceBoxInit();
         menuInit();
+
     }
 
     public void setMainController(MainController mainController) {
@@ -212,6 +254,7 @@ public class SettingsController {
                     Settings.getInstance().setComputer(Settings.XLETTER);
                     Settings.getInstance().setComputerRed(Settings.XLETTERRED);
                 }
+                initScoreBoard();
             }
         });
 

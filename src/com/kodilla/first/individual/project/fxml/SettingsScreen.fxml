@@ -11,23 +11,23 @@
          <font>
             <Font size="48.0" />
          </font></Label>
-      <Button fx:id="menuBtn" layoutX="433.0" layoutY="324.0" mnemonicParsing="false" onAction="#backMenu" onMouseEntered="#menuBtnMouseEntered" onMouseExited="#menuBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Menu">
+      <Button fx:id="menuBtn" layoutX="433.0" layoutY="344.0" mnemonicParsing="false" onAction="#backMenu" onMouseEntered="#menuBtnMouseEntered" onMouseExited="#menuBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Menu">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="easyBtn" layoutX="45.0" layoutY="247.0" mnemonicParsing="false" onAction="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
+      <Button fx:id="easyBtn" layoutX="45.0" layoutY="266.0" mnemonicParsing="false" onAction="#easyOnClick" prefHeight="25.0" prefWidth="148.0" text="Łatwy">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="mediumBtn" layoutX="45.0" layoutY="285.0" mnemonicParsing="false" onAction="#mediumOnClick" prefHeight="25.0" prefWidth="148.0" text="Średni">
+      <Button fx:id="mediumBtn" layoutX="45.0" layoutY="305.0" mnemonicParsing="false" onAction="#mediumOnClick" prefHeight="25.0" prefWidth="148.0" text="Średni">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="hardBtn" layoutX="45.0" layoutY="324.0" mnemonicParsing="false" onAction="#hardOnClick" prefHeight="25.0" prefWidth="148.0" text="Trudny">
+      <Button fx:id="hardBtn" layoutX="45.0" layoutY="344.0" mnemonicParsing="false" onAction="#hardOnClick" prefHeight="25.0" prefWidth="148.0" text="Trudny">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label alignment="CENTER" layoutX="45.0" layoutY="213.0" text="Poziom trudności" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="45.0" layoutY="234.0" text="Poziom trudności" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -37,11 +37,11 @@
             <Font name="System Bold" size="18.0" />
          </font></Label>
       <ChoiceBox fx:id="choiceBoxOfPickedFigure" layoutX="44.0" layoutY="113.0" prefWidth="150.0" />
-      <BorderPane layoutX="40.0" layoutY="143.0" prefHeight="70.0" prefWidth="159.0">
+      <BorderPane layoutX="40.0" layoutY="143.0" prefHeight="86.0" prefWidth="159.0">
          <center>
-            <ImageView fx:id="imageViewOfPickedFigure" fitHeight="56.0" fitWidth="140.0" onMouseClicked="#imageViewOfPickedFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageViewOfPickedFigure" fitHeight="75.0" fitWidth="140.0" onMouseClicked="#imageViewOfPickedFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center></BorderPane>
-      <Button fx:id="playSinglePlayerBtn" layoutX="433.0" layoutY="247.0" mnemonicParsing="false" onAction="#playSinglePlayer" onMouseEntered="#playSinglePlayerBtnMouseEntered" onMouseExited="#playSinglePlayerBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
+      <Button fx:id="playSinglePlayerBtn" layoutX="433.0" layoutY="266.0" mnemonicParsing="false" onAction="#playSinglePlayer" onMouseEntered="#playSinglePlayerBtnMouseEntered" onMouseExited="#playSinglePlayerBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
          <font>
             <Font size="18.0" />
          </font>
@@ -52,40 +52,84 @@
          </font>
       </Label>
       <ChoiceBox fx:id="choiceBoxOfStartingFigure" layoutX="238.0" layoutY="113.0" prefWidth="150.0" />
-      <BorderPane layoutX="233.0" layoutY="143.0" prefHeight="70.0" prefWidth="159.0">
+      <BorderPane layoutX="233.0" layoutY="143.0" prefHeight="86.0" prefWidth="159.0">
          <center>
-            <ImageView fx:id="imageViewOfStartingFigure" fitHeight="56.0" fitWidth="140.0" onMouseClicked="#imageViewOfStartingFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageViewOfStartingFigure" fitHeight="75.0" fitWidth="140.0" onMouseClicked="#imageViewOfStartingFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
-      <Button fx:id="oneBtn" layoutX="248.0" layoutY="247.0" mnemonicParsing="false" onAction="#oneOnClick" prefHeight="39.0" prefWidth="131.0" text="1">
+      <Button fx:id="oneBtn" layoutX="248.0" layoutY="266.0" mnemonicParsing="false" onAction="#oneOnClick" prefHeight="39.0" prefWidth="131.0" text="1">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="threeBtn" layoutX="248.0" layoutY="285.0" mnemonicParsing="false" onAction="#threeOnClick" prefHeight="39.0" prefWidth="131.0" text="3">
+      <Button fx:id="threeBtn" layoutX="248.0" layoutY="305.0" mnemonicParsing="false" onAction="#threeOnClick" prefHeight="39.0" prefWidth="131.0" text="3">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="fiveBtn" layoutX="248.0" layoutY="324.0" mnemonicParsing="false" onAction="#fiveOnClick" prefHeight="39.0" prefWidth="131.0" text="5">
+      <Button fx:id="fiveBtn" layoutX="248.0" layoutY="344.0" mnemonicParsing="false" onAction="#fiveOnClick" prefHeight="39.0" prefWidth="131.0" text="5">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="247.0" layoutY="213.0" prefHeight="27.0" prefWidth="131.0" text="Liczba gier" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="247.0" layoutY="234.0" prefHeight="27.0" prefWidth="131.0" text="Liczba gier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="433.0" layoutY="207.0" mnemonicParsing="false" onAction="#resetScore" onMouseEntered="#scoreBtnMouseEntered" onMouseExited="#scoreBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
+      <Button fx:id="resetBtn" layoutX="433.0" layoutY="228.0" mnemonicParsing="false" onAction="#resetScore" onMouseEntered="#scoreBtnMouseEntered" onMouseExited="#scoreBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Resetuj wynik">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button disable="true" layoutX="433.0" layoutY="285.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj duo">
+      <Button disable="true" layoutX="433.0" layoutY="305.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj duo">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="474.0" layoutY="86.0" prefHeight="27.0" prefWidth="60.0" text="Wynik" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="442.0" layoutY="134.0" prefHeight="79.0" prefWidth="124.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="5.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" fx:id="xImgV" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <center>
+                  <Label BorderPane.alignment="CENTER" fx:id="xLbl">
+                     <font>
+                        <Font name="System Bold" size="48.0" />
+                     </font>
+                  </Label>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <center>
+                  <ImageView fx:id="oImgV" fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="87.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <center>
+                  <Label fx:id="oLbl" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="48.0" />
+                     </font>
+                  </Label>
+               </center></BorderPane>
+         </children>
+      </GridPane>
    </children>
 </Pane>
