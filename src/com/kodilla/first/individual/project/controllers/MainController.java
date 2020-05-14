@@ -65,6 +65,21 @@ public class MainController {
         setBackgroundAndScreen(imageView, pane);
     }
 
+    public void loadFinishScreen(){
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/FinishScreen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FinishController finishController = loader.getController();
+        finishController.setMainController(this);
+        ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
+        imageView.setOpacity(0.8);
+        setScreenWithoutClearing(imageView, pane);
+    }
+
     public void setScreen(Pane pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(pane);
@@ -79,5 +94,12 @@ public class MainController {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(imageView);
         mainStackPane.getChildren().add(pane);
+    }
+    public void setScreenWithoutClearing(ImageView imageView,Pane pane){
+        mainStackPane.getChildren().add(imageView);
+        mainStackPane.getChildren().add(pane);
+    }
+    public void removeLastScreenWithoutClearing(Pane pane){
+        mainStackPane.getChildren().remove(mainStackPane.getChildren().size()-1);
     }
 }

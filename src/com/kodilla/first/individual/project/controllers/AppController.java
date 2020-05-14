@@ -53,6 +53,13 @@ public class AppController {
         testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
     }
 
+    public void checkiFGameFinished(){
+        if (Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
+                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())){
+            mainController.loadFinishScreen();
+        }
+    }
+
     public void initFirstMove(){
         System.out.println("wszedlem w init");
         System.out.println("player : "+Settings.getInstance().getPlayer().getUrl());
@@ -198,22 +205,10 @@ public class AppController {
     }
 
     public void computerMoveWithThread() {
-//        if (!endGame) {
-//            new Thread(() -> {
-//                try {
-//                    Thread.sleep(100);
-//                    computerMove();
-//                    checkLine();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }).start();
-//            //checkLine();
 
             computerMove();
             checkLine();
-
-       // }
+            checkiFGameFinished();
 
     }
 
