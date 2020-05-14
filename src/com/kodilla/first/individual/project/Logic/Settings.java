@@ -28,8 +28,6 @@ public final class Settings {
 
     private Integer oScore = 0;
     private Integer xScore = 0;
-    private Integer numberOfPlayerMoves = 0;
-    private Integer numberOfComputerMoves = 0;
     private Integer level = 3;
     private Integer numberOfGames = 3;
 
@@ -45,6 +43,10 @@ public final class Settings {
             }
         }
         return settings;
+    }
+    public void resetScore(){
+        setoScore(0);
+        setxScore(0);
     }
 
     public void reverseStartingFigure(){
@@ -119,22 +121,6 @@ public final class Settings {
 
     public void setxScore(Integer xScore) {
         this.xScore = xScore;
-    }
-
-    public Integer getNumberOfPlayerMoves() {
-        return numberOfPlayerMoves;
-    }
-
-    public void setNumberOfPlayerMoves(Integer numberOfPlayerMoves) {
-        this.numberOfPlayerMoves = numberOfPlayerMoves;
-    }
-
-    public Integer getNumberOfComputerMoves() {
-        return numberOfComputerMoves;
-    }
-
-    public void setNumberOfComputerMoves(Integer numberOfComputerMoves) {
-        this.numberOfComputerMoves = numberOfComputerMoves;
     }
 
     public Integer getLevel() {

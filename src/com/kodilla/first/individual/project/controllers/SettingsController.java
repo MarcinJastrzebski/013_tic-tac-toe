@@ -41,9 +41,12 @@ public class SettingsController {
 
     @FXML
     public void backMenu() {
-
         mainController.loadMenuScreen();
+    }
 
+    @FXML
+    public void resetScore(){
+        Settings.getInstance().resetScore();
     }
 
     @FXML
