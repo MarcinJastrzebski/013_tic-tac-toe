@@ -12,12 +12,6 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Label alignment="CENTER" layoutX="401.0" layoutY="92.0" prefHeight="36.0" prefWidth="171.0" text="Wybierz czym grasz" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="choiceBox" layoutX="401.0" layoutY="134.0" prefHeight="44.0" prefWidth="171.0" />
       <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="100.0" prefHeight="276.0" prefWidth="368.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,22 +71,17 @@
             </BorderPane>
          </children>
       </GridPane>
-      <BorderPane layoutX="401.0" layoutY="177.0" prefHeight="111.0" prefWidth="171.0">
-         <center>
-            <ImageView fx:id="testImage" fitHeight="89.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
-      <Button fx:id="playBtn" defaultButton="true" layoutX="401.0" layoutY="289.0" mnemonicParsing="false" onAction="#play" prefHeight="36.0" prefWidth="171.0" text="Graj!">
+      <Button fx:id="playBtn" defaultButton="true" layoutX="401.0" layoutY="245.0" mnemonicParsing="false" onAction="#play" prefHeight="36.0" prefWidth="171.0" text="Graj!">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="405.0" layoutY="14.0" prefHeight="75.0" prefWidth="60.0" text="Wynik:">
+      <Label alignment="CENTER" layoutX="401.0" layoutY="82.0" prefHeight="25.0" prefWidth="171.0" text="Wynik" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <GridPane layoutX="478.0" layoutY="23.0" prefHeight="67.0" prefWidth="86.0">
+      <GridPane layoutX="428.0" layoutY="149.0" prefHeight="79.0" prefWidth="124.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -105,33 +94,38 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <ImageView fitHeight="20.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" fx:id="xImgV" />
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" fx:id="xImgV" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <center>
                   <Label BorderPane.alignment="CENTER" fx:id="xLbl">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <center>
-                  <ImageView fx:id="oImgV" fitHeight="20.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                  <ImageView fx:id="oImgV" fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <BorderPane prefHeight="200.0" prefWidth="87.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <center>
                   <Label fx:id="oLbl" BorderPane.alignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
                </center></BorderPane>
          </children>
       </GridPane>
       <Label fx:id="testLbl" layoutX="115.0" layoutY="43.0" text="Label" />
+      <Button layoutX="401.0" layoutY="289.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="171.0" text="Ustawienia">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="20.0" />

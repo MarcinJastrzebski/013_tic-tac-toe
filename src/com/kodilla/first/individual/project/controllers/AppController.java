@@ -2,12 +2,9 @@ package com.kodilla.first.individual.project.controllers;
 
 import com.kodilla.first.individual.project.Logic.ExtendedImageView;
 import com.kodilla.first.individual.project.Logic.Settings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,8 +12,6 @@ import javafx.scene.image.ImageView;
 public class AppController {
 
     private MainController mainController;
-    @FXML
-    ChoiceBox<String> choiceBox;
     @FXML
     ImageView image00;
     @FXML
@@ -43,19 +38,13 @@ public class AppController {
     Label xLbl;
     @FXML
     Label oLbl;
-
     @FXML
     Button playBtn;
-
     @FXML
     Label testLbl;
 
     @FXML
-    private ImageView testImage;
-
-    @FXML
     public void initialize() {
-        //choiceBoxInit();
         xImgV.setImage(Settings.XLETTER);
         xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
         oImgV.setImage(Settings.OLETTER);
@@ -192,7 +181,6 @@ public class AppController {
     @FXML
     public void play() {
 
-        choiceBox.setVisible(false);
         Settings.getInstance().setEndGame(false);
 
 
@@ -209,31 +197,6 @@ public class AppController {
         image22.setImage(Settings.TRANSP);
     }
 
-    private void choiceBoxInit() {
-        choiceBox.getItems().add("Kółko");
-        choiceBox.getItems().add("Krzyżyk");
-        choiceBox.setValue("Krzyżyk");
-        testImage.setImage(Settings.XLETTER);
-        Settings.getInstance().setPlayer(Settings.XLETTER);
-        Settings.getInstance().setComputer(Settings.OLETTER);
-        choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                System.out.println(choiceBox.getItems().get((Integer) t1));
-                if ("Krzyżyk".equals(choiceBox.getItems().get((Integer) t1))) {
-                    testImage.setImage(Settings.XLETTER);
-                    Settings.getInstance().setPlayer(Settings.XLETTER);
-                    Settings.getInstance().setComputer(Settings.OLETTER);
-
-                } else {
-                    testImage.setImage(Settings.OLETTER);
-                    Settings.getInstance().setPlayer(Settings.OLETTER);
-                    Settings.getInstance().setComputer(Settings.XLETTER);
-                }
-            }
-
-        });
-    }
 
     public void checkLine() {
         System.out.println("Sprawdzam linię");
