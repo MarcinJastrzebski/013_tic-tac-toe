@@ -143,6 +143,23 @@ public class SettingsController {
         menuBtn.setDefaultButton(false);
     }
 
+    @FXML
+    public void imageViewOfStartingFigureOnClicked(){
+        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())){
+            choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
+        } else{
+            choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
+        }
+    }
+
+    @FXML
+    public void imageViewOfPickedFigureOnClicked(){
+        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())){
+            choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
+        } else{
+            choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
+        }
+    }
 
     public void menuInit() {
         if (Settings.HARD.equals(Settings.getInstance().getLevel())) {

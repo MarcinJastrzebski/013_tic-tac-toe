@@ -43,6 +43,8 @@ public class AppController {
     Button playBtn;
     @FXML
     Label testLbl;
+    @FXML
+    Label scoreLbl;
 
     @FXML
     public void initialize() {
@@ -52,6 +54,7 @@ public class AppController {
     }
 
     public void initScoreBoard() {
+        scoreLbl.setTextFill(Color.web("#000000", 1));
 
         if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
             xImgV.setImage(Settings.XLETTERRED);
@@ -62,11 +65,14 @@ public class AppController {
             oImgV.setImage(Settings.OLETTER);
             oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
             oLbl.setText(Settings.getInstance().getoScore().toString());
+            oLbl.setTextFill(Color.web("#000000", 1));
+
 
         } else {
             xImgV.setImage(Settings.XLETTER);
             xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
             xLbl.setText(Settings.getInstance().getxScore().toString());
+            xLbl.setTextFill(Color.web("#000000", 1));
 
             oImgV.setImage(Settings.OLETTERRED);
             oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);

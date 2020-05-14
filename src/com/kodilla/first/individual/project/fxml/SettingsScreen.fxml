@@ -39,7 +39,7 @@
       <ChoiceBox fx:id="choiceBoxOfPickedFigure" layoutX="44.0" layoutY="113.0" prefWidth="150.0" />
       <BorderPane layoutX="40.0" layoutY="143.0" prefHeight="70.0" prefWidth="159.0">
          <center>
-            <ImageView fx:id="imageViewOfPickedFigure" fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageViewOfPickedFigure" fitHeight="56.0" fitWidth="140.0" onMouseClicked="#imageViewOfPickedFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center></BorderPane>
       <Button fx:id="playSinglePlayerBtn" layoutX="433.0" layoutY="247.0" mnemonicParsing="false" onAction="#playSinglePlayer" onMouseEntered="#playSinglePlayerBtnMouseEntered" onMouseExited="#playSinglePlayerBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Graj solo">
          <font>
@@ -54,7 +54,7 @@
       <ChoiceBox fx:id="choiceBoxOfStartingFigure" layoutX="238.0" layoutY="113.0" prefWidth="150.0" />
       <BorderPane layoutX="233.0" layoutY="143.0" prefHeight="70.0" prefWidth="159.0">
          <center>
-            <ImageView fx:id="imageViewOfStartingFigure" fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageViewOfStartingFigure" fitHeight="56.0" fitWidth="140.0" onMouseClicked="#imageViewOfStartingFigureOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <Button fx:id="oneBtn" layoutX="248.0" layoutY="247.0" mnemonicParsing="false" onAction="#oneOnClick" prefHeight="39.0" prefWidth="131.0" text="1">
