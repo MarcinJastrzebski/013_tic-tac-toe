@@ -76,7 +76,7 @@ public class MainController {
         FinishController finishController = loader.getController();
         finishController.setMainController(this);
         ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
-        imageView.setOpacity(0.8);
+        imageView.setOpacity(0.9);
         setScreenWithoutClearing(imageView, pane);
     }
 

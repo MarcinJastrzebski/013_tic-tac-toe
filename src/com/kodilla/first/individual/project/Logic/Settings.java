@@ -29,7 +29,7 @@ public final class Settings {
     private Integer oScore = 0;
     private Integer xScore = 0;
     private Integer level = 3;
-    private Integer numberOfGames = 3;
+    private Integer numberOfGames = 1;
 
     private Settings() {
     }

@@ -42,20 +42,17 @@ public class AppController {
     @FXML
     Button playBtn;
     @FXML
-    Label testLbl;
-    @FXML
     Label scoreLbl;
 
     @FXML
     public void initialize() {
         initScoreBoard();
-
-        testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
+        play();
     }
 
     public void checkiFGameFinished(){
         if (Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
-                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())){
+                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())){
             mainController.loadFinishScreen();
         }
     }
