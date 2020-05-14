@@ -234,8 +234,8 @@ public class SettingsController {
         imageViewOfPickedFigure.setImage(Settings.getInstance().getPlayerRed());
 
 
-        Settings.getInstance().setPlayer(Settings.XLETTER);
-        Settings.getInstance().setComputer(Settings.OLETTER);
+        //Settings.getInstance().setPlayer(Settings.getInstance().getPlayer());
+        //Settings.getInstance().setComputer(Settings.getInstance().getComputer());
 
         choiceBoxOfPickedFigure.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -285,4 +285,6 @@ public class SettingsController {
             }
         });
     }
+
+
 }
