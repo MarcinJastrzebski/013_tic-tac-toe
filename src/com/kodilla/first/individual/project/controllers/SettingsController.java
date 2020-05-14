@@ -51,7 +51,6 @@ public class SettingsController {
     Label oLbl;
 
     public void initScoreBoard() {
-        //scoreLbl.setTextFill(Color.web("#000000", 1));
 
         if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
             xImgV.setImage(Settings.XLETTERRED);
@@ -77,6 +76,7 @@ public class SettingsController {
             oLbl.setTextFill(Color.web("#88001b", 1));
         }
 
+
     }
 
     @FXML
@@ -87,6 +87,7 @@ public class SettingsController {
     @FXML
     public void resetScore(){
         Settings.getInstance().resetScore();
+        initScoreBoard();
     }
 
     @FXML
