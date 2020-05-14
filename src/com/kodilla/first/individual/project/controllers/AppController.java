@@ -53,6 +53,17 @@ public class AppController {
         testLbl.setText(Settings.getInstance().getNumberOfGames().toString());
     }
 
+    public void initFirstMove(){
+        System.out.println("wszedlem w init");
+        System.out.println("player : "+Settings.getInstance().getPlayer().getUrl());
+        System.out.println("starting figure : "+Settings.getInstance().getStartingFigure().getUrl());
+        if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
+            image11.setImage(Settings.getInstance().getComputer());
+            System.out.println("powinienem rysowac");
+        }
+
+    }
+
     public void initScoreBoard() {
         scoreLbl.setTextFill(Color.web("#000000", 1));
 
@@ -227,6 +238,8 @@ public class AppController {
         image20.setImage(Settings.TRANSP);
         image21.setImage(Settings.TRANSP);
         image22.setImage(Settings.TRANSP);
+
+        initFirstMove();
     }
 
 

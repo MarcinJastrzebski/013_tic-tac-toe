@@ -145,7 +145,7 @@ public class SettingsController {
 
     @FXML
     public void imageViewOfStartingFigureOnClicked(){
-        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())){
+        if (Settings.XLETTERRED.getUrl().equals(imageViewOfStartingFigure.getImage().getUrl())){
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
         } else{
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
@@ -215,11 +215,11 @@ public class SettingsController {
         choiceBoxOfStartingFigure.getItems().add(Settings.OLETTERSTRING);
         choiceBoxOfStartingFigure.getItems().add(Settings.XLETTERSTRING);
 
-        choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.getInstance().getComputerRed()));
-        imageViewOfStartingFigure.setImage(Settings.getInstance().getComputerRed());
-
-        Settings.getInstance().setPlayer(Settings.XLETTER);
-        Settings.getInstance().setComputer(Settings.OLETTER);
+        choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.getInstance().getStartingFigureRed()));
+        imageViewOfStartingFigure.setImage(Settings.getInstance().getStartingFigureRed());
+//
+//        Settings.getInstance().setPlayer(Settings.XLETTER);
+//        Settings.getInstance().setComputer(Settings.OLETTER);
 
         choiceBoxOfStartingFigure.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -229,9 +229,11 @@ public class SettingsController {
                 if (Settings.XLETTERSTRING.equals(choiceBoxOfStartingFigure.getItems().get((Integer) t1))) {
                     imageViewOfStartingFigure.setImage(Settings.XLETTERRED);
                     Settings.getInstance().setStartingFigure(Settings.XLETTER);
+                    Settings.getInstance().setStartingFigureRed(Settings.XLETTERRED);
                 } else {
                     imageViewOfStartingFigure.setImage(Settings.OLETTERRED);
                     Settings.getInstance().setStartingFigure(Settings.OLETTER);
+                    Settings.getInstance().setStartingFigureRed(Settings.OLETTERRED);
                 }
             }
         });

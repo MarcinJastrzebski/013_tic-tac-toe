@@ -24,6 +24,7 @@ public final class Settings {
     private Image computer = OLETTER;
     private Image computerRed = OLETTERRED;
     private Image startingFigure = XLETTER;
+    private Image startingFigureRed = XLETTERRED;
 
     private Integer oScore = 0;
     private Integer xScore = 0;
@@ -140,6 +141,14 @@ public final class Settings {
 
     public void setNumberOfGames(Integer numberOfGames) {
         this.numberOfGames = numberOfGames;
+    }
+
+    public Image getStartingFigureRed() {
+        return startingFigureRed;
+    }
+
+    public void setStartingFigureRed(Image startingFigureRed) {
+        this.startingFigureRed = startingFigureRed;
     }
 
     public String getNameOfImage(Image image) {
