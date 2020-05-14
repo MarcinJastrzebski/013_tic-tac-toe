@@ -43,7 +43,7 @@ public class MainController {
         }
         AppController appController = loader.getController();
         appController.setMainController(this);
-        ImageView imageView = new ImageView(new Image("file:resources/woodenBcg.jpg"));
+        ImageView imageView = new ImageView(new Image("file:resources/woodenBcg3.jpg"));
         //  imageView.setScaleX(1.1);
         imageView.setFitHeight(400);
         imageView.setY(130);
