@@ -251,20 +251,12 @@ public class AppController {
         if (image00.getImage().equals(image01.getImage())
                 && image01.getImage().equals(image02.getImage())
                 && !Settings.TRANSP.equals(image00.getImage())) {
-            System.out.println("LINIA BB");
             image00.setImage(changeImage(image00.getImage()));
-            System.out.println("B1");
             image01.setImage(changeImage(image01.getImage()));
-            System.out.println("B2");
-
             image02.setImage(changeImage(image02.getImage()));
-            System.out.println("B3");
-
             addPoint(figure(image00.getImage()));
-            System.out.println("B4");
-
             Settings.getInstance().setEndGame(true);
-            System.out.println("B5");
+            Settings.getInstance().reverseStartingFigure();
 
         } else if (image10.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image12.getImage())
@@ -275,6 +267,7 @@ public class AppController {
             image12.setImage(changeImage(image12.getImage()));
             addPoint(figure(image10.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image20.getImage().equals(image21.getImage())
                 && image21.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image20.getImage())) {
@@ -284,6 +277,7 @@ public class AppController {
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image20.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image00.getImage().equals(image10.getImage())
                 && image10.getImage().equals(image20.getImage())
                 && !Settings.TRANSP.equals(image00.getImage())) {
@@ -293,6 +287,7 @@ public class AppController {
             image20.setImage(changeImage(image20.getImage()));
             addPoint(figure(image00.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image01.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image21.getImage())
                 && !Settings.TRANSP.equals(image01.getImage())) {
@@ -302,6 +297,7 @@ public class AppController {
             image21.setImage(changeImage(image21.getImage()));
             addPoint(figure(image01.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image02.getImage().equals(image12.getImage())
                 && image12.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image02.getImage())) {
@@ -311,6 +307,7 @@ public class AppController {
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image02.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image00.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image00.getImage())) {
@@ -320,6 +317,7 @@ public class AppController {
             image22.setImage(changeImage(image22.getImage()));
             addPoint(figure(image00.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         } else if (image02.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image20.getImage())
                 && !Settings.TRANSP.equals(image02.getImage())) {
@@ -329,6 +327,7 @@ public class AppController {
             image20.setImage(changeImage(image20.getImage()));
             addPoint(figure(image02.getImage()));
             Settings.getInstance().setEndGame(true);
+            Settings.getInstance().reverseStartingFigure();
         }
     }
 

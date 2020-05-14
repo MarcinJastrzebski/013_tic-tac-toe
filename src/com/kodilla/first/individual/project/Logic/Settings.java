@@ -47,6 +47,16 @@ public final class Settings {
         return settings;
     }
 
+    public void reverseStartingFigure(){
+        if (XLETTER.getUrl().equals(startingFigure.getUrl())){
+            setStartingFigure(OLETTER);
+            setStartingFigureRed(OLETTERRED);
+        } else {
+            setStartingFigure(XLETTER);
+            setStartingFigureRed(XLETTERRED);
+        }
+    }
+
     public boolean isEndGame() {
         return endGame;
     }
