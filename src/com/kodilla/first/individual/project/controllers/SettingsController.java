@@ -102,16 +102,18 @@ public class SettingsController {
 
     @FXML
     public void playDuoGame(){
-
+        Settings.getInstance().setSoloGame(false);
+        mainController.loadSinglePlayerScreen();
     }
 
     @FXML
     public void playDuoGameBtnMouseEntered(){
-
+        playDuoGameBtn.setDefaultButton(true);
     }
 
     @FXML
     public void playDuoGameBtnMouseExited(){
+        playDuoGameBtn.setDefaultButton(false);
 
     }
 
@@ -171,6 +173,7 @@ public class SettingsController {
 
     @FXML
     public void playSinglePlayer() {
+        Settings.getInstance().setSoloGame(true);
         mainController.loadSinglePlayerScreen();
     }
 

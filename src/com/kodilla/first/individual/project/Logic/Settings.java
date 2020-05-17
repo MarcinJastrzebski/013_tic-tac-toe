@@ -19,7 +19,7 @@ public final class Settings {
     public final static String OLETTERSTRING = "Kółko";
 
     private boolean endGame = false;
-    private boolean soloGame = false;
+    private boolean soloGame = true;
     private Image player = XLETTER;
     private Image playerRed = XLETTERRED;
     private Image computer = OLETTER;

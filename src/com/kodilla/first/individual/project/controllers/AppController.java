@@ -50,18 +50,18 @@ public class AppController {
         play();
     }
 
-    public void checkiFGameFinished(){
+    public void checkIfGameIsFinished() {
         if (Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
-                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())){
+                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())) {
             mainController.loadFinishScreen();
         }
     }
 
-    public void initFirstMove(){
+    public void initFirstMove() {
         System.out.println("wszedlem w init");
-        System.out.println("player : "+Settings.getInstance().getPlayer().getUrl());
-        System.out.println("starting figure : "+Settings.getInstance().getStartingFigure().getUrl());
-        if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
+        System.out.println("player : " + Settings.getInstance().getPlayer().getUrl());
+        System.out.println("starting figure : " + Settings.getInstance().getStartingFigure().getUrl());
+        if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
             image11.setImage(Settings.getInstance().getComputer());
             System.out.println("powinienem rysowac");
         }
@@ -71,7 +71,7 @@ public class AppController {
     public void initScoreBoard() {
         scoreLbl.setTextFill(Color.web("#000000", 1));
 
-        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
+        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
             xImgV.setImage(Settings.XLETTERRED);
             xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
             xLbl.setText(Settings.getInstance().getxScore().toString());
@@ -104,7 +104,7 @@ public class AppController {
     }
 
     @FXML
-    public void settingsMenu(){
+    public void settingsMenu() {
         mainController.loadSettingsScreen();
     }
 
@@ -115,98 +115,104 @@ public class AppController {
             System.out.println("image " + image00.getImage());
             System.out.println("player " + Settings.getInstance().getPlayer());
             System.out.println("xletter" + Settings.XLETTER.equals(image00.getImage()));
-            checkLine();
 
-            computerMoveWithThread();
+
+            gameLogicForButton();
         }
+    }
+
+    public void gameLogicForButton() {
+        checkLine();
+        if (Settings.getInstance().isSoloGame()) {
+            logicForSoloGame();
+        } else {
+            logicForDuoGame();
+        }
+    }
+
+    public void logicForDuoGame() {
+        changePlayer();
+        initScoreBoard();
+    }
+
+
+    public void changePlayer() {
+        Image tmpImage = Settings.getInstance().getPlayer();
+        Image tmpImageRed = Settings.getInstance().getPlayerRed();
+        Settings.getInstance().setPlayer(Settings.getInstance().getComputer());
+        Settings.getInstance().setPlayerRed(Settings.getInstance().getComputerRed());
+        Settings.getInstance().setComputer(tmpImage);
+        Settings.getInstance().setComputerRed(tmpImageRed);
     }
 
     @FXML
     public void image01Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image01.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image01.getImage())) {
             image01.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image02Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image02.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image02.getImage())) {
             image02.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image10Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image10.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image10.getImage())) {
             image10.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image11Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image11.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image11.getImage())) {
             image11.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image12Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image12.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image12.getImage())) {
             image12.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image20Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image20.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image20.getImage())) {
             image20.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image21Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image21.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image21.getImage())) {
             image21.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
     @FXML
     public void image22Clicked() {
-        if (!Settings.getInstance().isEndGame()  && Settings.TRANSP.equals(image22.getImage())) {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image22.getImage())) {
             image22.setImage(Settings.getInstance().getPlayer());
-            checkLine();
-
-            computerMoveWithThread();
+            gameLogicForButton();
         }
     }
 
-    public void computerMoveWithThread() {
-
-            computerMove();
-            checkLine();
-            checkiFGameFinished();
-
+    public void logicForSoloGame() {
+        computerMove();
+        checkLine();
+        checkIfGameIsFinished();
     }
 
     public void setMainController(MainController mainController) {
@@ -228,7 +234,7 @@ public class AppController {
         image21.setImage(Settings.TRANSP);
         image22.setImage(Settings.TRANSP);
 
-        if (Settings.getInstance().isSoloGame()){
+        if (Settings.getInstance().isSoloGame()) {
             initFirstMove();
         }
     }
@@ -236,7 +242,7 @@ public class AppController {
 
     public void checkLine() {
         System.out.println("Sprawdzam linię");
-        if (Settings.getInstance().isEndGame() ){
+        if (Settings.getInstance().isEndGame()) {
             return;
         }
         if (image00.getImage().equals(image01.getImage())
@@ -332,10 +338,10 @@ public class AppController {
 
     public void addPoint(String figure) {
         if ("x".equals(figure)) {
-            Settings.getInstance().setxScore(Settings.getInstance().getxScore()+1);
+            Settings.getInstance().setxScore(Settings.getInstance().getxScore() + 1);
             xLbl.setText(Settings.getInstance().getxScore().toString());
         } else {
-            Settings.getInstance().setoScore(Settings.getInstance().getoScore()+1);
+            Settings.getInstance().setoScore(Settings.getInstance().getoScore() + 1);
             oLbl.setText(Settings.getInstance().getoScore().toString());
         }
 
@@ -350,13 +356,13 @@ public class AppController {
     }
 
     public void computerMove() {
-        if (Settings.HARD.equals(Settings.getInstance().getLevel())){
+        if (Settings.HARD.equals(Settings.getInstance().getLevel())) {
             winStrategyMove();
-        } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())){
+        } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())) {
             blockingStrategyMove();
-        } else if (Settings.EASY.equals(Settings.getInstance().getLevel())){
+        } else if (Settings.EASY.equals(Settings.getInstance().getLevel())) {
             randomComputerMove();
-        } else  {
+        } else {
             randomComputerMove();
         }
     }
@@ -386,7 +392,7 @@ public class AppController {
         } else {
             System.out.println("PROBLEM");
         }
-        System.out.println("endGame: " + Settings.getInstance().isEndGame() );
+        System.out.println("endGame: " + Settings.getInstance().isEndGame());
 
     }
 
@@ -410,11 +416,11 @@ public class AppController {
         } else if (checkLineToBlock(player, image20, image11, image02).getaBoolean()) {
             checkLineToBlock(player, image20, image11, image02).getImageView().setImage(computer);
         } else {
-             randomComputerMove();
+            randomComputerMove();
         }
     }
 
-    public void winStrategyMove(){
+    public void winStrategyMove() {
         Image computer = Settings.getInstance().getComputer();
         if (checkLineToBlock(computer, image00, image01, image02).getaBoolean()) {
             checkLineToBlock(computer, image00, image01, image02).getImageView().setImage(computer);
