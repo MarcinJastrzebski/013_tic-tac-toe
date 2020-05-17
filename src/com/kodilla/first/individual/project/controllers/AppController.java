@@ -217,9 +217,6 @@ public class AppController {
     public void play() {
 
         Settings.getInstance().setEndGame(false);
-
-
-
         image00.setImage(Settings.TRANSP);
         //image00.setScaleX(0.1);
         image01.setImage(Settings.TRANSP);
@@ -231,7 +228,9 @@ public class AppController {
         image21.setImage(Settings.TRANSP);
         image22.setImage(Settings.TRANSP);
 
-        initFirstMove();
+        if (Settings.getInstance().isSoloGame()){
+            initFirstMove();
+        }
     }
 
 

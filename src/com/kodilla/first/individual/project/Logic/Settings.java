@@ -19,6 +19,7 @@ public final class Settings {
     public final static String OLETTERSTRING = "Kółko";
 
     private boolean endGame = false;
+    private boolean soloGame = false;
     private Image player = XLETTER;
     private Image playerRed = XLETTERRED;
     private Image computer = OLETTER;
@@ -153,5 +154,13 @@ public final class Settings {
         } else {
             return OLETTERSTRING;
         }
+    }
+
+    public boolean isSoloGame() {
+        return soloGame;
+    }
+
+    public void setSoloGame(boolean soloGame) {
+        this.soloGame = soloGame;
     }
 }

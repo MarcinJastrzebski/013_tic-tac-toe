@@ -82,7 +82,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button disable="true" layoutX="433.0" layoutY="305.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Graj duo">
+      <Button fx:id="playDuoGameBtn" layoutX="433.0" layoutY="305.0" mnemonicParsing="false" onAction="#playDuoGame" onMouseEntered="#playDuoGameBtnMouseEntered" onMouseExited="#playDuoGameBtnMouseExited" prefHeight="39.0" prefWidth="142.0" text="Graj duo">
          <font>
             <Font size="18.0" />
          </font>

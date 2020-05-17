@@ -42,6 +42,8 @@ public class SettingsController {
     @FXML
     Button menuBtn;
     @FXML
+    Button playDuoGameBtn;
+    @FXML
     ImageView xImgV;
     @FXML
     ImageView oImgV;
@@ -95,6 +97,21 @@ public class SettingsController {
         initScoreBoard();
         choiceBoxInit();
         menuInit();
+
+    }
+
+    @FXML
+    public void playDuoGame(){
+
+    }
+
+    @FXML
+    public void playDuoGameBtnMouseEntered(){
+
+    }
+
+    @FXML
+    public void playDuoGameBtnMouseExited(){
 
     }
 
