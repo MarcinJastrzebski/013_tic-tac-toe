@@ -101,7 +101,19 @@ public class SettingsController {
     }
 
     @FXML
+    public void playSinglePlayer() {
+        if (!Settings.getInstance().isSoloGame()){
+            resetScore();
+        }
+        Settings.getInstance().setSoloGame(true);
+        mainController.loadSinglePlayerScreen();
+    }
+
+    @FXML
     public void playDuoGame(){
+        if (Settings.getInstance().isSoloGame()){
+            resetScore();
+        }
         Settings.getInstance().setSoloGame(false);
         mainController.loadSinglePlayerScreen();
     }
@@ -171,11 +183,7 @@ public class SettingsController {
 
     }
 
-    @FXML
-    public void playSinglePlayer() {
-        Settings.getInstance().setSoloGame(true);
-        mainController.loadSinglePlayerScreen();
-    }
+
 
     @FXML
     public void scoreBtnMouseEntered() {

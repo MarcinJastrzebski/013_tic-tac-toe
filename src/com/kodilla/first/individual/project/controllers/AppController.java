@@ -44,6 +44,9 @@ public class AppController {
     @FXML
     Label scoreLbl;
 
+    //ToDO
+    //dodac czysty Screen po kliknieciu reste planszy
+
     @FXML
     public void initialize() {
         initScoreBoard();
@@ -128,6 +131,12 @@ public class AppController {
         } else {
             logicForDuoGame();
         }
+        checkIfGameIsFinished();
+    }
+
+    public void logicForSoloGame() {
+        computerMove();
+        checkLine();
     }
 
     public void logicForDuoGame() {
@@ -209,11 +218,7 @@ public class AppController {
         }
     }
 
-    public void logicForSoloGame() {
-        computerMove();
-        checkLine();
-        checkIfGameIsFinished();
-    }
+
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
