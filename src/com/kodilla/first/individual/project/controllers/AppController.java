@@ -143,97 +143,32 @@ public class AppController {
         this.mainController = mainController;
     }
 
-    public void checkLine() {
-        if (image00.getImage().equals(image01.getImage())
-                && image01.getImage().equals(image02.getImage())
-                && !Settings.TRANSP.equals(image00.getImage())) {
-            image00.setImage(changeImage(image00.getImage()));
-            image01.setImage(changeImage(image01.getImage()));
-            image02.setImage(changeImage(image02.getImage()));
-            addPoint(figure(image00.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-
-        } else if (image10.getImage().equals(image11.getImage())
-                && image11.getImage().equals(image12.getImage())
-                && !Settings.TRANSP.equals(image10.getImage())) {
-            image10.setImage(changeImage(image10.getImage()));
-            image11.setImage(changeImage(image11.getImage()));
-            image12.setImage(changeImage(image12.getImage()));
-            addPoint(figure(image10.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image20.getImage().equals(image21.getImage())
-                && image21.getImage().equals(image22.getImage())
-                && !Settings.TRANSP.equals(image20.getImage())) {
-            image20.setImage(changeImage(image20.getImage()));
-            image21.setImage(changeImage(image21.getImage()));
-            image22.setImage(changeImage(image22.getImage()));
-            addPoint(figure(image20.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image00.getImage().equals(image10.getImage())
-                && image10.getImage().equals(image20.getImage())
-                && !Settings.TRANSP.equals(image00.getImage())) {
-            image00.setImage(changeImage(image00.getImage()));
-            image10.setImage(changeImage(image10.getImage()));
-            image20.setImage(changeImage(image20.getImage()));
-            addPoint(figure(image00.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image01.getImage().equals(image11.getImage())
-                && image11.getImage().equals(image21.getImage())
-                && !Settings.TRANSP.equals(image01.getImage())) {
-            image01.setImage(changeImage(image01.getImage()));
-            image11.setImage(changeImage(image11.getImage()));
-            image21.setImage(changeImage(image21.getImage()));
-            addPoint(figure(image01.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image02.getImage().equals(image12.getImage())
-                && image12.getImage().equals(image22.getImage())
-                && !Settings.TRANSP.equals(image02.getImage())) {
-            image02.setImage(changeImage(image02.getImage()));
-            image12.setImage(changeImage(image12.getImage()));
-            image22.setImage(changeImage(image22.getImage()));
-            addPoint(figure(image02.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image00.getImage().equals(image11.getImage())
-                && image11.getImage().equals(image22.getImage())
-                && !Settings.TRANSP.equals(image00.getImage())) {
-            image00.setImage(changeImage(image00.getImage()));
-            image11.setImage(changeImage(image11.getImage()));
-            image22.setImage(changeImage(image22.getImage()));
-            addPoint(figure(image00.getImage()));
-            Settings.getInstance().setEndGame(true);
-            checkIfGameIsFinished();
-            refreshScoreBoard();
-            Settings.getInstance().reverseStartingFigure();
-        } else if (image02.getImage().equals(image11.getImage())
-                && image11.getImage().equals(image20.getImage())
-                && !Settings.TRANSP.equals(image02.getImage())) {
-            image02.setImage(changeImage(image02.getImage()));
-            image11.setImage(changeImage(image11.getImage()));
-            image20.setImage(changeImage(image20.getImage()));
-            addPoint(figure(image02.getImage()));
+    public void checkOneLine(ImageView imageView1, ImageView imageView2, ImageView imageView3){
+        if(imageView1.getImage().equals(imageView2.getImage())
+        && imageView2.getImage().equals(imageView3.getImage())
+        && !Settings.TRANSP.equals(imageView1.getImage())
+        && !Settings.getInstance().isEndGame()){
+            imageView1.setImage(changeImage(imageView1.getImage()));
+            imageView2.setImage(changeImage(imageView2.getImage()));
+            imageView3.setImage(changeImage(imageView3.getImage()));
+            addPoint(figure(imageView1.getImage()));
             Settings.getInstance().setEndGame(true);
             checkIfGameIsFinished();
             refreshScoreBoard();
             Settings.getInstance().reverseStartingFigure();
         }
+
+    }
+
+    public void checkLines() {
+        checkOneLine(image00,image01,image02);
+        checkOneLine(image10,image11,image12);
+        checkOneLine(image20,image21,image22);
+        checkOneLine(image00,image10,image20);
+        checkOneLine(image01,image11,image21);
+        checkOneLine(image02,image12,image22);
+        checkOneLine(image00,image11,image22);
+        checkOneLine(image02,image11,image20);
     }
 
     public Image changeImage(Image image) {
@@ -395,7 +330,7 @@ public class AppController {
     }
 
     public void gameLogicForButton() {
-        checkLine();
+        checkLines();
         if (Settings.getInstance().isSoloGame()) {
             logicForSoloGame();
         } else {
