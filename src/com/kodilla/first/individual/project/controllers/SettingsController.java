@@ -110,7 +110,7 @@ public class SettingsController {
             resetScore();
         }
         Settings.getInstance().setSoloGame(true);
-        mainController.loadSinglePlayerScreen();
+        mainController.loadAppScreen();
     }
 
     @FXML
@@ -119,7 +119,7 @@ public class SettingsController {
             resetScore();
         }
         Settings.getInstance().setSoloGame(false);
-        mainController.loadSinglePlayerScreen();
+        mainController.loadAppScreen();
     }
 
     @FXML

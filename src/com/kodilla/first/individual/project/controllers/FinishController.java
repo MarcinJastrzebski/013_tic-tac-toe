@@ -21,7 +21,7 @@ public class FinishController {
     @FXML
     public void play(){
         Settings.getInstance().resetScore();
-        mainController.loadSinglePlayerScreen();
+        mainController.loadAppScreen();
     }
     @FXML
     public void backMenu(){

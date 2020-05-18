@@ -33,7 +33,7 @@ public class MainController {
         setScreen(pane);
     }
 
-    public void loadSinglePlayerScreen() {
+    public void loadAppScreen() {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/AppScreen.fxml"));
         Pane pane = null;
         try {
@@ -77,6 +77,20 @@ public class MainController {
         finishController.setMainController(this);
         ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
         imageView.setOpacity(0.9);
+        setScreenWithoutClearing(imageView, pane);
+    }
+    public void loadCleanScreen(){
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("fxml/CleanScreen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CleanController cleanController = loader.getController();
+        cleanController.setMainController(this);
+        ImageView imageView = new ImageView(new Image("file:resources/boardEmpty.png"));
+        imageView.setOpacity(0.4);
         setScreenWithoutClearing(imageView, pane);
     }
 

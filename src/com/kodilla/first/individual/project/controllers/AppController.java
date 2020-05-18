@@ -136,6 +136,10 @@ public class AppController {
             imageView1.setImage(changeImage(imageView1.getImage()));
             imageView2.setImage(changeImage(imageView2.getImage()));
             imageView3.setImage(changeImage(imageView3.getImage()));
+            if (!Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
+                    || !Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())) {
+                mainController.loadCleanScreen();
+            }
             addPoint(figure(imageView1.getImage()));
             Settings.getInstance().setEndGame(true);
             checkIfGameIsFinished();
