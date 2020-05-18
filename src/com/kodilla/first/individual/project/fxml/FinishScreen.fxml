@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane opacity="0.7" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodilla.first.individual.project.controllers.FinishController">
+<AnchorPane onMouseClicked="#clickOnPane" opacity="0.7" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodilla.first.individual.project.controllers.FinishController">
    <children>
       <Label layoutX="51.0" layoutY="105.0" text="KONIEC GRY" textFill="WHITE">
          <font>
@@ -18,8 +18,7 @@
          </font>
       </Label>
       <ImageView fx:id="winnerImgV" fitHeight="150.0" fitWidth="184.0" layoutX="130.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="playBtn" defaultButton="true" layoutX="401.0" layoutY="245.0" mnemonicParsing="false"
-              onAction="#play" prefHeight="36.0" prefWidth="171.0" text="Nowa gra!">
+      <Button fx:id="playBtn" defaultButton="true" layoutX="401.0" layoutY="245.0" mnemonicParsing="false" onAction="#play" prefHeight="36.0" prefWidth="171.0" text="Nowa gra!">
          <font>
             <Font size="20.0" />
          </font>

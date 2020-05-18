@@ -33,6 +33,10 @@ public class FinishController {
         Settings.getInstance().resetScore();
         mainController.loadSettingsScreen();
     }
+    @FXML
+    public void clickOnPane(){
+        play();
+    }
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;

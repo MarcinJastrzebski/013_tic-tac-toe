@@ -193,8 +193,6 @@ public class AppController {
             winStrategyMove();
         } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())) {
             blockingStrategyMove();
-        } else if (Settings.EASY.equals(Settings.getInstance().getLevel())) {
-            easyComputerMove();
         } else {
             easyComputerMove();
         }
@@ -288,6 +286,7 @@ public class AppController {
     }
 
     public void logicForSoloGame() {
+        checkLines();
         if (!Settings.getInstance().isEndGame()) {
             computerMove();
         }
