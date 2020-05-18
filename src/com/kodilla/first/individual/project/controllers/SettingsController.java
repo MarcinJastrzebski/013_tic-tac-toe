@@ -4,13 +4,10 @@ import com.kodilla.first.individual.project.Logic.Settings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-
 
 public class SettingsController {
 
@@ -53,35 +50,10 @@ public class SettingsController {
     Label oLbl;
 
     public void initScoreBoard() {
-
-        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())){
-            xImgV.setImage(Settings.XLETTERRED);
-            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            xLbl.setText(Settings.getInstance().getxScore().toString());
-            xLbl.setTextFill(Color.web("#88001b", 1));
-
-            oImgV.setImage(Settings.OLETTER);
-            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            oLbl.setText(Settings.getInstance().getoScore().toString());
-            oLbl.setTextFill(Color.web("#000000", 1));
-
-
-        } else {
-            xImgV.setImage(Settings.XLETTER);
-            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            xLbl.setText(Settings.getInstance().getxScore().toString());
-            xLbl.setTextFill(Color.web("#000000", 1));
-
-            oImgV.setImage(Settings.OLETTERRED);
-            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            oLbl.setText(Settings.getInstance().getoScore().toString());
-            oLbl.setTextFill(Color.web("#88001b", 1));
-        }
-
-
+        MainController.initScoreImages(xImgV, xLbl, oImgV, oLbl);
     }
 
-    public void refreshScoreBoard(){
+    public void refreshScoreBoard() {
         initScoreBoard();
     }
 
@@ -91,9 +63,9 @@ public class SettingsController {
     }
 
     @FXML
-    public void resetScore(){
+    public void resetScore() {
         Settings.getInstance().resetScore();
-        initScoreBoard();
+        refreshScoreBoard();
     }
 
     @FXML
@@ -106,7 +78,7 @@ public class SettingsController {
 
     @FXML
     public void playSinglePlayer() {
-        if (!Settings.getInstance().isSoloGame()){
+        if (!Settings.getInstance().isSoloGame()) {
             resetScore();
         }
         Settings.getInstance().setSoloGame(true);
@@ -114,8 +86,8 @@ public class SettingsController {
     }
 
     @FXML
-    public void playDuoGame(){
-        if (Settings.getInstance().isSoloGame()){
+    public void playDuoGame() {
+        if (Settings.getInstance().isSoloGame()) {
             resetScore();
         }
         Settings.getInstance().setSoloGame(false);
@@ -123,12 +95,12 @@ public class SettingsController {
     }
 
     @FXML
-    public void playDuoGameBtnMouseEntered(){
+    public void playDuoGameBtnMouseEntered() {
         playDuoGameBtn.setDefaultButton(true);
     }
 
     @FXML
-    public void playDuoGameBtnMouseExited(){
+    public void playDuoGameBtnMouseExited() {
         playDuoGameBtn.setDefaultButton(false);
 
     }
@@ -166,9 +138,8 @@ public class SettingsController {
         oneBtn.setDefaultButton(true);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(false);
-        if (Settings.getInstance().getNumberOfGames()!=1){
+        if (Settings.getInstance().getNumberOfGames() != 1) {
             resetScore();
-            //refreshScoreBoard();
         }
         Settings.getInstance().setNumberOfGames(1);
     }
@@ -178,12 +149,10 @@ public class SettingsController {
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(true);
         fiveBtn.setDefaultButton(false);
-        if (Settings.getInstance().getNumberOfGames()!=3){
+        if (Settings.getInstance().getNumberOfGames() != 3) {
             resetScore();
-            //refreshScoreBoard();
         }
         Settings.getInstance().setNumberOfGames(3);
-
     }
 
     @FXML
@@ -191,26 +160,19 @@ public class SettingsController {
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(true);
-        if (Settings.getInstance().getNumberOfGames()!=5){
+        if (Settings.getInstance().getNumberOfGames() != 5) {
             resetScore();
-            //refreshScoreBoard();
-
         }
         Settings.getInstance().setNumberOfGames(5);
-
     }
-
-
 
     @FXML
     public void scoreBtnMouseEntered() {
-        //Button button = this.getClass().
         resetBtn.setDefaultButton(true);
     }
 
     @FXML
     public void scoreBtnMouseExited() {
-        //Button button = this.getClass().
         resetBtn.setDefaultButton(false);
     }
 
@@ -235,19 +197,19 @@ public class SettingsController {
     }
 
     @FXML
-    public void imageViewOfStartingFigureOnClicked(){
-        if (Settings.XLETTERRED.getUrl().equals(imageViewOfStartingFigure.getImage().getUrl())){
+    public void imageViewOfStartingFigureOnClicked() {
+        if (Settings.XLETTERRED.getUrl().equals(imageViewOfStartingFigure.getImage().getUrl())) {
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
-        } else{
+        } else {
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
         }
     }
 
     @FXML
-    public void imageViewOfPickedFigureOnClicked(){
-        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())){
+    public void imageViewOfPickedFigureOnClicked() {
+        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())) {
             choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
-        } else{
+        } else {
             choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
         }
     }
@@ -274,19 +236,12 @@ public class SettingsController {
     private void choiceBoxInit() {
         choiceBoxOfPickedFigure.getItems().add(Settings.OLETTERSTRING);
         choiceBoxOfPickedFigure.getItems().add(Settings.XLETTERSTRING);
-
         choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.getInstance().getPlayerRed()));
         imageViewOfPickedFigure.setImage(Settings.getInstance().getPlayerRed());
-
-
-        //Settings.getInstance().setPlayer(Settings.getInstance().getPlayer());
-        //Settings.getInstance().setComputer(Settings.getInstance().getComputer());
 
         choiceBoxOfPickedFigure.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                //System.out.println(choiceBoxOfPickedFigure.getItems().get((Integer) t1));
-
                 if (Settings.XLETTERSTRING.equals(choiceBoxOfPickedFigure.getItems().get((Integer) t1))) {
                     imageViewOfPickedFigure.setImage(Settings.XLETTERRED);
                     Settings.getInstance().setPlayer(Settings.XLETTER);
@@ -306,18 +261,12 @@ public class SettingsController {
 
         choiceBoxOfStartingFigure.getItems().add(Settings.OLETTERSTRING);
         choiceBoxOfStartingFigure.getItems().add(Settings.XLETTERSTRING);
-
         choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.getInstance().getStartingFigureRed()));
         imageViewOfStartingFigure.setImage(Settings.getInstance().getStartingFigureRed());
-//
-//        Settings.getInstance().setPlayer(Settings.XLETTER);
-//        Settings.getInstance().setComputer(Settings.OLETTER);
 
         choiceBoxOfStartingFigure.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                //System.out.println(choiceBoxOfStartingFigure.getItems().get((Integer) t1));
-
                 if (Settings.XLETTERSTRING.equals(choiceBoxOfStartingFigure.getItems().get((Integer) t1))) {
                     imageViewOfStartingFigure.setImage(Settings.XLETTERRED);
                     Settings.getInstance().setStartingFigure(Settings.XLETTER);
@@ -330,6 +279,5 @@ public class SettingsController {
             }
         });
     }
-
 
 }

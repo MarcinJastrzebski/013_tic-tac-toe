@@ -9,10 +9,6 @@ public class MenuController {
     private MainController mainController;
 
     @FXML
-    public void initialize() {
-    }
-
-    @FXML
     public void playSinglePlayer() {
         if (!Settings.getInstance().isSoloGame()){
             Settings.getInstance().resetScore();

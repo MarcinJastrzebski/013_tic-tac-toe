@@ -3,7 +3,6 @@ package com.kodilla.first.individual.project.controllers;
 import com.kodilla.first.individual.project.Logic.ExtendedImageView;
 import com.kodilla.first.individual.project.Logic.Settings;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -44,11 +43,6 @@ public class AppController {
     @FXML
     Label scoreLbl;
 
-    //ToDO
-    //dodac czysty Screen po kliknieciu reste planszy
-    //usunac paczke sample
-    //oczyscic i uprościc kod jak się da
-
     @FXML
     public void initialize() {
         initScoreBoard();
@@ -57,30 +51,7 @@ public class AppController {
 
     public void initScoreBoard() {
         scoreLbl.setTextFill(Color.web("#000000", 1));
-
-        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
-            xImgV.setImage(Settings.XLETTERRED);
-            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            xLbl.setText(Settings.getInstance().getxScore().toString());
-            xLbl.setTextFill(Color.web("#88001b", 1));
-
-            oImgV.setImage(Settings.OLETTER);
-            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            oLbl.setText(Settings.getInstance().getoScore().toString());
-            oLbl.setTextFill(Color.web("#000000", 1));
-
-
-        } else {
-            xImgV.setImage(Settings.XLETTER);
-            xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            xLbl.setText(Settings.getInstance().getxScore().toString());
-            xLbl.setTextFill(Color.web("#000000", 1));
-
-            oImgV.setImage(Settings.OLETTERRED);
-            oImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
-            oLbl.setText(Settings.getInstance().getoScore().toString());
-            oLbl.setTextFill(Color.web("#88001b", 1));
-        }
+        MainController.initScoreImages(xImgV, xLbl, oImgV, oLbl);
     }
 
     public void clearGameBoard() {
@@ -122,7 +93,6 @@ public class AppController {
         Settings.getInstance().setComputer(tmpImage);
         Settings.getInstance().setComputerRed(tmpImageRed);
     }
-
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;

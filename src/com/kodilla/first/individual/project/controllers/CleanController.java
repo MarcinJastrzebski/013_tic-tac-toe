@@ -1,6 +1,5 @@
 package com.kodilla.first.individual.project.controllers;
 
-import com.kodilla.first.individual.project.Logic.Settings;
 import javafx.fxml.FXML;
 
 public class CleanController {
@@ -16,18 +15,17 @@ public class CleanController {
     }
 
     @FXML
-    public void play(){
-        Settings.getInstance().resetScore();
+    public void play() {
         mainController.loadAppScreen();
     }
+
     @FXML
-    public void backMenu(){
-        Settings.getInstance().resetScore();
+    public void backMenu() {
         mainController.loadMenuScreen();
     }
+
     @FXML
-    public void settingsMenu(){
-        Settings.getInstance().resetScore();
+    public void settingsMenu() {
         mainController.loadSettingsScreen();
     }
 }
