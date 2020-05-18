@@ -46,6 +46,8 @@ public class AppController {
 
     //ToDO
     //dodac czysty Screen po kliknieciu reste planszy
+    //usunac paczke sample
+    //oczyscic i uprościc kod jak się da
 
     @FXML
     public void initialize() {
@@ -60,13 +62,9 @@ public class AppController {
         }
     }
 
-    public void initFirstMove() {
-        System.out.println("wszedlem w init");
-        System.out.println("player : " + Settings.getInstance().getPlayer().getUrl());
-        System.out.println("starting figure : " + Settings.getInstance().getStartingFigure().getUrl());
+    public void initComputerFirstMove() {
         if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
             image11.setImage(Settings.getInstance().getComputer());
-            System.out.println("powinienem rysowac");
         }
 
     }
@@ -100,6 +98,9 @@ public class AppController {
 
     }
 
+    public void refreshScoreBoard() {
+        initScoreBoard();
+    }
 
     @FXML
     public void backMenu() {
@@ -111,18 +112,6 @@ public class AppController {
         mainController.loadSettingsScreen();
     }
 
-    @FXML
-    public void image00Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image00.getImage())) {
-            image00.setImage(Settings.getInstance().getPlayer());
-            System.out.println("image " + image00.getImage());
-            System.out.println("player " + Settings.getInstance().getPlayer());
-            System.out.println("xletter" + Settings.XLETTER.equals(image00.getImage()));
-
-
-            gameLogicForButton();
-        }
-    }
 
     public void gameLogicForButton() {
         checkLine();
@@ -141,9 +130,8 @@ public class AppController {
 
     public void logicForDuoGame() {
         changePlayer();
-        initScoreBoard();
+        refreshScoreBoard();
     }
-
 
     public void changePlayer() {
         Image tmpImage = Settings.getInstance().getPlayer();
@@ -153,71 +141,6 @@ public class AppController {
         Settings.getInstance().setComputer(tmpImage);
         Settings.getInstance().setComputerRed(tmpImageRed);
     }
-
-    @FXML
-    public void image01Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image01.getImage())) {
-            image01.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image02Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image02.getImage())) {
-            image02.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image10Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image10.getImage())) {
-            image10.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image11Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image11.getImage())) {
-            image11.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image12Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image12.getImage())) {
-            image12.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image20Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image20.getImage())) {
-            image20.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image21Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image21.getImage())) {
-            image21.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
-    @FXML
-    public void image22Clicked() {
-        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image22.getImage())) {
-            image22.setImage(Settings.getInstance().getPlayer());
-            gameLogicForButton();
-        }
-    }
-
 
 
     public void setMainController(MainController mainController) {
@@ -229,7 +152,6 @@ public class AppController {
 
         Settings.getInstance().setEndGame(false);
         image00.setImage(Settings.TRANSP);
-        //image00.setScaleX(0.1);
         image01.setImage(Settings.TRANSP);
         image02.setImage(Settings.TRANSP);
         image10.setImage(Settings.TRANSP);
@@ -240,13 +162,11 @@ public class AppController {
         image22.setImage(Settings.TRANSP);
 
         if (Settings.getInstance().isSoloGame()) {
-            initFirstMove();
+            initComputerFirstMove();
         }
     }
 
-
     public void checkLine() {
-        System.out.println("Sprawdzam linię");
         if (Settings.getInstance().isEndGame()) {
             return;
         }
@@ -263,7 +183,6 @@ public class AppController {
         } else if (image10.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image12.getImage())
                 && !Settings.TRANSP.equals(image10.getImage())) {
-            System.out.println("LINIA");
             image10.setImage(changeImage(image10.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image12.setImage(changeImage(image12.getImage()));
@@ -273,7 +192,6 @@ public class AppController {
         } else if (image20.getImage().equals(image21.getImage())
                 && image21.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image20.getImage())) {
-            System.out.println("LINIA");
             image20.setImage(changeImage(image20.getImage()));
             image21.setImage(changeImage(image21.getImage()));
             image22.setImage(changeImage(image22.getImage()));
@@ -283,7 +201,6 @@ public class AppController {
         } else if (image00.getImage().equals(image10.getImage())
                 && image10.getImage().equals(image20.getImage())
                 && !Settings.TRANSP.equals(image00.getImage())) {
-            System.out.println("LINIA");
             image00.setImage(changeImage(image00.getImage()));
             image10.setImage(changeImage(image10.getImage()));
             image20.setImage(changeImage(image20.getImage()));
@@ -293,7 +210,6 @@ public class AppController {
         } else if (image01.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image21.getImage())
                 && !Settings.TRANSP.equals(image01.getImage())) {
-            System.out.println("LINIA");
             image01.setImage(changeImage(image01.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image21.setImage(changeImage(image21.getImage()));
@@ -303,7 +219,6 @@ public class AppController {
         } else if (image02.getImage().equals(image12.getImage())
                 && image12.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image02.getImage())) {
-            System.out.println("LINIA");
             image02.setImage(changeImage(image02.getImage()));
             image12.setImage(changeImage(image12.getImage()));
             image22.setImage(changeImage(image22.getImage()));
@@ -313,7 +228,6 @@ public class AppController {
         } else if (image00.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image22.getImage())
                 && !Settings.TRANSP.equals(image00.getImage())) {
-            System.out.println("LINIA");
             image00.setImage(changeImage(image00.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image22.setImage(changeImage(image22.getImage()));
@@ -323,7 +237,6 @@ public class AppController {
         } else if (image02.getImage().equals(image11.getImage())
                 && image11.getImage().equals(image20.getImage())
                 && !Settings.TRANSP.equals(image02.getImage())) {
-            System.out.println("LINIA");
             image02.setImage(changeImage(image02.getImage()));
             image11.setImage(changeImage(image11.getImage()));
             image20.setImage(changeImage(image20.getImage()));
@@ -394,10 +307,7 @@ public class AppController {
             image20.setImage(computer);
         } else if (Settings.TRANSP.equals(image21.getImage())) {
             image21.setImage(computer);
-        } else {
-            System.out.println("PROBLEM");
         }
-        System.out.println("endGame: " + Settings.getInstance().isEndGame());
 
     }
 
@@ -448,7 +358,6 @@ public class AppController {
         }
     }
 
-
     public ExtendedImageView checkLineToBlock(Image pattern, ImageView image1, ImageView image2, ImageView image3) {
         int counter = 0;
         boolean tmpBoolean;
@@ -476,6 +385,79 @@ public class AppController {
             return new ExtendedImageView(image1, tmpBoolean);
         }
         return new ExtendedImageView(new ImageView(), false);
+    }
+
+
+    @FXML
+    public void image00Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image00.getImage())) {
+            image00.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image01Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image01.getImage())) {
+            image01.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image02Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image02.getImage())) {
+            image02.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image10Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image10.getImage())) {
+            image10.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image11Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image11.getImage())) {
+            image11.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image12Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image12.getImage())) {
+            image12.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image20Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image20.getImage())) {
+            image20.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image21Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image21.getImage())) {
+            image21.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
+    }
+
+    @FXML
+    public void image22Clicked() {
+        if (!Settings.getInstance().isEndGame() && Settings.TRANSP.equals(image22.getImage())) {
+            image22.setImage(Settings.getInstance().getPlayer());
+            gameLogicForButton();
+        }
     }
 
 }
