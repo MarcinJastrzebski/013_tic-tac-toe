@@ -83,7 +83,7 @@ public class AppController {
         }
     }
 
-    public void clearGameBoard(){
+    public void clearGameBoard() {
         image00.setImage(Settings.TRANSP);
         image01.setImage(Settings.TRANSP);
         image02.setImage(Settings.TRANSP);
@@ -97,23 +97,10 @@ public class AppController {
 
     @FXML
     public void play() {
-
         Settings.getInstance().setEndGame(false);
         clearGameBoard();
-
         if (Settings.getInstance().isSoloGame()) {
             initComputerFirstMove();
-        }
-    }
-
-
-
-
-
-    public void checkIfGameIsFinished() {
-        if (Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
-                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())) {
-            mainController.loadFinishScreen();
         }
     }
 
@@ -121,13 +108,11 @@ public class AppController {
         if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
             image11.setImage(Settings.getInstance().getComputer());
         }
-
     }
 
     public void refreshScoreBoard() {
         initScoreBoard();
     }
-
 
     public void changePlayer() {
         Image tmpImage = Settings.getInstance().getPlayer();
@@ -143,11 +128,11 @@ public class AppController {
         this.mainController = mainController;
     }
 
-    public void checkOneLine(ImageView imageView1, ImageView imageView2, ImageView imageView3){
-        if(imageView1.getImage().equals(imageView2.getImage())
-        && imageView2.getImage().equals(imageView3.getImage())
-        && !Settings.TRANSP.equals(imageView1.getImage())
-        && !Settings.getInstance().isEndGame()){
+    public void checkOneLine(ImageView imageView1, ImageView imageView2, ImageView imageView3) {
+        if (imageView1.getImage().equals(imageView2.getImage())
+                && imageView2.getImage().equals(imageView3.getImage())
+                && !Settings.TRANSP.equals(imageView1.getImage())
+                && !Settings.getInstance().isEndGame()) {
             imageView1.setImage(changeImage(imageView1.getImage()));
             imageView2.setImage(changeImage(imageView2.getImage()));
             imageView3.setImage(changeImage(imageView3.getImage()));
@@ -157,18 +142,24 @@ public class AppController {
             refreshScoreBoard();
             Settings.getInstance().reverseStartingFigure();
         }
-
     }
 
     public void checkLines() {
-        checkOneLine(image00,image01,image02);
-        checkOneLine(image10,image11,image12);
-        checkOneLine(image20,image21,image22);
-        checkOneLine(image00,image10,image20);
-        checkOneLine(image01,image11,image21);
-        checkOneLine(image02,image12,image22);
-        checkOneLine(image00,image11,image22);
-        checkOneLine(image02,image11,image20);
+        checkOneLine(image00, image01, image02);
+        checkOneLine(image10, image11, image12);
+        checkOneLine(image20, image21, image22);
+        checkOneLine(image00, image10, image20);
+        checkOneLine(image01, image11, image21);
+        checkOneLine(image02, image12, image22);
+        checkOneLine(image00, image11, image22);
+        checkOneLine(image02, image11, image20);
+    }
+
+    public void checkIfGameIsFinished() {
+        if (Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getxScore())
+                || Settings.getInstance().getNumberOfGames().equals(Settings.getInstance().getoScore())) {
+            mainController.loadFinishScreen();
+        }
     }
 
     public Image changeImage(Image image) {
@@ -187,7 +178,6 @@ public class AppController {
             Settings.getInstance().setoScore(Settings.getInstance().getoScore() + 1);
             oLbl.setText(Settings.getInstance().getoScore().toString());
         }
-
     }
 
     public String figure(Image image) {
@@ -204,16 +194,14 @@ public class AppController {
         } else if (Settings.MEDIUM.equals(Settings.getInstance().getLevel())) {
             blockingStrategyMove();
         } else if (Settings.EASY.equals(Settings.getInstance().getLevel())) {
-            randomComputerMove();
+            easyComputerMove();
         } else {
-            randomComputerMove();
+            easyComputerMove();
         }
     }
 
-    public void randomComputerMove() {
+    public void easyComputerMove() {
         Image computer = Settings.getInstance().getComputer();
-
-
         if (Settings.TRANSP.equals(image11.getImage())) {
             image11.setImage(computer);
         } else if (Settings.TRANSP.equals(image01.getImage())) {
@@ -233,60 +221,49 @@ public class AppController {
         } else if (Settings.TRANSP.equals(image21.getImage())) {
             image21.setImage(computer);
         }
-
     }
 
     public void blockingStrategyMove() {
-        Image player = Settings.getInstance().getPlayer();
-        Image computer = Settings.getInstance().getComputer();
-        if (checkLineToBlock(player, image00, image01, image02).getaBoolean()) {
-            checkLineToBlock(player, image00, image01, image02).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image10, image11, image12).getaBoolean()) {
-            checkLineToBlock(player, image10, image11, image12).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image20, image21, image22).getaBoolean()) {
-            checkLineToBlock(player, image20, image21, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image00, image10, image20).getaBoolean()) {
-            checkLineToBlock(player, image00, image10, image20).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image01, image11, image21).getaBoolean()) {
-            checkLineToBlock(player, image01, image11, image21).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image02, image12, image22).getaBoolean()) {
-            checkLineToBlock(player, image02, image12, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image00, image11, image22).getaBoolean()) {
-            checkLineToBlock(player, image00, image11, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(player, image20, image11, image02).getaBoolean()) {
-            checkLineToBlock(player, image20, image11, image02).getImageView().setImage(computer);
-        } else {
-            randomComputerMove();
-        }
+        commonComputerStrategy("MEDIUM");
     }
 
     public void winStrategyMove() {
-        Image computer = Settings.getInstance().getComputer();
-        if (checkLineToBlock(computer, image00, image01, image02).getaBoolean()) {
-            checkLineToBlock(computer, image00, image01, image02).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image10, image11, image12).getaBoolean()) {
-            checkLineToBlock(computer, image10, image11, image12).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image20, image21, image22).getaBoolean()) {
-            checkLineToBlock(computer, image20, image21, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image00, image10, image20).getaBoolean()) {
-            checkLineToBlock(computer, image00, image10, image20).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image01, image11, image21).getaBoolean()) {
-            checkLineToBlock(computer, image01, image11, image21).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image02, image12, image22).getaBoolean()) {
-            checkLineToBlock(computer, image02, image12, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image00, image11, image22).getaBoolean()) {
-            checkLineToBlock(computer, image00, image11, image22).getImageView().setImage(computer);
-        } else if (checkLineToBlock(computer, image20, image11, image02).getaBoolean()) {
-            checkLineToBlock(computer, image20, image11, image02).getImageView().setImage(computer);
+        commonComputerStrategy("HARD");
+    }
+
+    public void commonComputerStrategy(String strategy) {
+        Image imageToCheck = Settings.getInstance().getComputer();
+        if ("MEDIUM".equals(strategy)) {
+            imageToCheck = Settings.getInstance().getPlayer();
+        }
+        Image imageToSet = Settings.getInstance().getComputer();
+        if (checkLineForComputerStrategy(imageToCheck, image00, image01, image02).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image00, image01, image02).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image10, image11, image12).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image10, image11, image12).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image20, image21, image22).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image20, image21, image22).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image00, image10, image20).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image00, image10, image20).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image01, image11, image21).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image01, image11, image21).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image02, image12, image22).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image02, image12, image22).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image00, image11, image22).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image00, image11, image22).getImageView().setImage(imageToSet);
+        } else if (checkLineForComputerStrategy(imageToCheck, image20, image11, image02).getaBoolean()) {
+            checkLineForComputerStrategy(imageToCheck, image20, image11, image02).getImageView().setImage(imageToSet);
         } else {
-            blockingStrategyMove();
+            if ("HARD".equals(strategy)) {
+                blockingStrategyMove();
+            } else {
+                easyComputerMove();
+            }
         }
     }
 
-    public ExtendedImageView checkLineToBlock(Image pattern, ImageView image1, ImageView image2, ImageView image3) {
+    public ExtendedImageView checkLineForComputerStrategy(Image pattern, ImageView image1, ImageView image2, ImageView image3) {
         int counter = 0;
-        boolean tmpBoolean;
-
         if (pattern.equals(image1.getImage())) {
             counter += 1;
         }
@@ -297,27 +274,18 @@ public class AppController {
             counter += 1;
         }
         if (counter == 2) {
-            tmpBoolean = true;
             if (Settings.TRANSP.equals(image1.getImage())) {
-                return new ExtendedImageView(image1, tmpBoolean);
+                return new ExtendedImageView(image1, true);
             } else if (Settings.TRANSP.equals(image2.getImage())) {
-                return new ExtendedImageView(image2, tmpBoolean);
+                return new ExtendedImageView(image2, true);
             } else if (Settings.TRANSP.equals(image3.getImage())) {
-                return new ExtendedImageView(image3, tmpBoolean);
+                return new ExtendedImageView(image3, true);
             }
         } else {
-            tmpBoolean = false;
-            return new ExtendedImageView(image1, tmpBoolean);
+            return new ExtendedImageView(image1, false);
         }
         return new ExtendedImageView(new ImageView(), false);
     }
-
-
-
-
-
-
-
 
     public void logicForSoloGame() {
         if (!Settings.getInstance().isEndGame()) {
@@ -330,12 +298,13 @@ public class AppController {
     }
 
     public void gameLogicForButton() {
-        checkLines();
+
         if (Settings.getInstance().isSoloGame()) {
             logicForSoloGame();
         } else {
             logicForDuoGame();
         }
+        checkLines();
     }
 
     @FXML
