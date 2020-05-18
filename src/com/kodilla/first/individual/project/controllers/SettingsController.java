@@ -81,6 +81,10 @@ public class SettingsController {
 
     }
 
+    public void refreshScoreBoard(){
+        initScoreBoard();
+    }
+
     @FXML
     public void backMenu() {
         mainController.loadMenuScreen();
@@ -162,6 +166,10 @@ public class SettingsController {
         oneBtn.setDefaultButton(true);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(false);
+        if (Settings.getInstance().getNumberOfGames()!=1){
+            resetScore();
+            //refreshScoreBoard();
+        }
         Settings.getInstance().setNumberOfGames(1);
     }
 
@@ -170,6 +178,10 @@ public class SettingsController {
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(true);
         fiveBtn.setDefaultButton(false);
+        if (Settings.getInstance().getNumberOfGames()!=3){
+            resetScore();
+            //refreshScoreBoard();
+        }
         Settings.getInstance().setNumberOfGames(3);
 
     }
@@ -179,6 +191,11 @@ public class SettingsController {
         oneBtn.setDefaultButton(false);
         threeBtn.setDefaultButton(false);
         fiveBtn.setDefaultButton(true);
+        if (Settings.getInstance().getNumberOfGames()!=5){
+            resetScore();
+            //refreshScoreBoard();
+
+        }
         Settings.getInstance().setNumberOfGames(5);
 
     }
