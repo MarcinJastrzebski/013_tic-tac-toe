@@ -76,7 +76,7 @@ public class AppController {
     }
 
     public void initComputerFirstMove() {
-        if (!Settings.getInstance().getStartingFigure().getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
+        if (!Settings.getInstance().getStartingFigure().impl_getUrl().equals(Settings.getInstance().getPlayer().impl_getUrl())) {
             image11.setImage(Settings.getInstance().getComputer());
         }
     }
@@ -137,7 +137,7 @@ public class AppController {
     }
 
     public Image changeImage(Image image) {
-        if (Settings.XLETTER.getUrl().equals(image.getUrl())) {
+        if (Settings.XLETTER.impl_getUrl().equals(image.impl_getUrl())) {
             return Settings.XLETTERRED;
         } else {
             return Settings.OLETTERRED;

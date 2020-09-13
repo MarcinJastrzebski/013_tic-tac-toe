@@ -51,7 +51,7 @@ public final class Settings {
     }
 
     public void reverseStartingFigure(){
-        if (XLETTER.getUrl().equals(startingFigure.getUrl())){
+        if (XLETTER.impl_getUrl().equals(startingFigure.impl_getUrl())){
             setStartingFigure(OLETTER);
             setStartingFigureRed(OLETTERRED);
         } else {

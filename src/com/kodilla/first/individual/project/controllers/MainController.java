@@ -121,7 +121,7 @@ public class MainController {
     }
 
     public static void initScoreImages(ImageView xImgV, Label xLbl, ImageView oImgV, Label oLbl) {
-        if (Settings.XLETTER.getUrl().equals(Settings.getInstance().getPlayer().getUrl())) {
+        if (Settings.XLETTER.impl_getUrl().equals(Settings.getInstance().getPlayer().impl_getUrl())) {
             xImgV.setImage(Settings.XLETTERRED);
             xImgV.setFitHeight(Parent.BASELINE_OFFSET_SAME_AS_HEIGHT);
             xLbl.setText(Settings.getInstance().getxScore().toString());

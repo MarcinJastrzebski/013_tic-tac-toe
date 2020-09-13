@@ -198,7 +198,7 @@ public class SettingsController {
 
     @FXML
     public void imageViewOfStartingFigureOnClicked() {
-        if (Settings.XLETTERRED.getUrl().equals(imageViewOfStartingFigure.getImage().getUrl())) {
+        if (Settings.XLETTERRED.impl_getUrl().equals(imageViewOfStartingFigure.getImage().impl_getUrl())) {
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
         } else {
             choiceBoxOfStartingFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
@@ -207,7 +207,7 @@ public class SettingsController {
 
     @FXML
     public void imageViewOfPickedFigureOnClicked() {
-        if (Settings.XLETTERRED.getUrl().equals(imageViewOfPickedFigure.getImage().getUrl())) {
+        if (Settings.XLETTERRED.impl_getUrl().equals(imageViewOfPickedFigure.getImage().impl_getUrl())) {
             choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.OLETTER));
         } else {
             choiceBoxOfPickedFigure.setValue(Settings.getInstance().getNameOfImage(Settings.XLETTER));
